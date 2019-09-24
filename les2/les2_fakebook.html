@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+        
+    <meta charset="utf-8">
+    
+    <!-- Google fontje 'Roboto' en 'Source Sans Pro' erbij. Waarom niet ;) -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro&display=swap" rel="stylesheet">
+
+    <title>Fakebook - Axel Breens</title>
+    
+    <style>
+        
+        /* HTML en BODY tag moeten best 100% hoogte krijgen */
+        html, body { 
+            //height: 100%; 
+            //width: 100%;
+            //box-sizing: border-box;
+            //font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Roboto', sans-serif;
+           
+        }
+        
+        #divResult1, #divError {
+     		width: 350px;
+     		//background-color: PaleGreen;
+     		//background-color: LightCoral;
+     		//background-color: PowderBlue;
+     		//background-color: LightYellow;
+            background-color: lightgray;
+     		padding: 10px;	
+     		margin-top: 10px;
+            color: black;
+     	}
+        
+        #divResult1:hover {
+            //border: 1px solid red;
+            background-color: lightBlue;
+        }
+        
+        #divError { 
+            background-color: lightcoral;
+            display: none;
+        }
+        
+        .wrapper {
+            margin: 0 auto;
+            width: 1500px;
+            background-image: url(img/beach.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding: 25px 0 60px 25px;
+        }
+        
+    </style>
+    
+    <!-- jQuery - Add link to Google CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script>
+        
+        // Voer script pas uit als DOM gereed is
+        $(document).ready(function() {
+    
+            // *** Een foto carrousel van katjes ***
+            
+            // Tellertje
+            var i = 1;
+            
+            // Event Handler voor de knop Wissel
+            $('#btnWissel').on('click', function() {
+                
+                // 1. Teller ophogen
+                i++;
+                
+                // 2. Meerdere attributen aanpassen via objectnotatie
+                var imgAttributen = {
+                    'src' : 'img/kitten' + i + '.jpg',
+                    'title' : 'Afbeelding van poes ' + i,
+                    'alt' : 'Afbeelding van poes ' + i
+                };
+                
+                $('#imgKitten').attr(imgAttributen);
+                
+                // 3. Reset teller indien nodig
+                if (i > 2) { i = 0 };
+                
+            });
+            
+               
+            // *** Event Handler voor knop Zoek ***
+            
+            $('#btnZoek').on('click', function() {
+                var naam = $('#txtVoornaam').val();
+                $('#divError').css('display', 'block').html(naam + ' is niet gevonden!');
+            });
+            
+            
+        });
+
+    </script>
+    
+</head>
+
+<body>
+	
+    <div class="wrapper">
+        
+        <h1><i>FAKEBOOK</i></h1>
+        
+        <input type="text" id="txtVoornaam" class="normal" placeholder="Uw naam" />
+        <button id="btnZoek"> Zoek </button>
+        <div id="divError"></div>
+        
+        <h2>Axel Breens</h2>
+        
+        <img src="img\kitten1.jpg" id="imgKitten" title='Afbeelding van poes 1' width="250px"/><br />
+        <button id="btnWissel">Verander afbeelding</button>
+        
+        <div id="divResult1">
+            <b>City: </b>Antwerp<br /><br/>
+            <b>Age: </b>20+<br /><br />
+            <b>Education: </b>Yes<br /><br />
+            <b>Hobby: </b>Cats<br /><br />
+            <b>FB Friends: </b>0<br /><br />
+            <b>FB Enemies: </b>0<br />
+        </div>
+    
+    </div>
+    
+</body>
+</html>
