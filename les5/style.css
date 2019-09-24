@@ -17,34 +17,18 @@ body, .bdserv, .bdapp, .bdfaq, .bdabout {
 }
 
 /* Specific 'body' class for services.html */
-.bdserv { 
-    background: url("img/boom.jpg") center center; 
-    background-size: cover; 
-}
+.bdserv { background: url("img/boom.jpg") center center; background-size: cover; }
 
 /* Specific 'body' class for appointment.html */
-.bdapp { 
-    background: url("img/woestijn.jpg") center center; 
-    background-size: cover; 
-}
+.bdapp { background: url("img/woestijn.jpg") center center; background-size: cover; }
 
 /* Specific 'body' class for faq.html */
-.bdfaq { 
-    background: url("img/boot.jpg") center center; 
-    background-size: cover; 
-}
+.bdfaq { background: url("img/boot.jpg") center center; background-size: cover; }
 
 /* Specific 'body' class for about.html */
-.bdabout { 
-    background: url("img/human.jpg") center center; 
-    background-size: cover; 
-}
+.bdabout { background: url("img/human.jpg") center center; background-size: cover; }
 
-a {
-    margin-right: 75px;
-    text-decoration: none;
-    color: white;
-}
+a { text-decoration: none; color: white; }
 
 a:hover { color: #1c80c1; }
 
@@ -69,6 +53,8 @@ input, textarea {
     background-color: black;
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
 }
+
+.navigation a { margin-right: 75px; }
 
 .navigation input {
     margin-right: 25px;
@@ -177,7 +163,7 @@ article {
 /*** SPECIFIC STYLING FOR ABOUT.HTML ***/
 
 #fotobanner {
-    width: 1200px;
+    width: 100%;
     clear: left;
 }
 
@@ -214,8 +200,9 @@ article {
 
 @media screen and (max-width: 1025px) {
     
-    .navigation { 
-        flex-direction: column;
+    .navigation, .artwrapper { flex-direction: column; }
+    
+    .navigation {
         align-items: flex-start; /* CROSS axis is nu horizontaal! */
         height: 165px;
         padding: 10px 0 10px 20px;
@@ -226,11 +213,9 @@ article {
     
     .banner, #logo, #fotobanner { display: none; }
     
-    /* Height og .navigation is 165px geworden */
+    /* Height of .navigation is 165px geworden */
     .indexwrapper { height: calc(100% - 165px); }
          
     .wrapper { margin-top: 0; }
     
-    .artwrapper { flex-direction: column; }
-
 }
