@@ -38,7 +38,10 @@ def resultaat (i, j, o):
     elif o == "*":
         return i * j
     elif o == "/":
-        return i / j
+        if j == 0:
+            return("DIV BY ZERO ERROR!!!")
+        else:
+            return i / j
 
 # INITIALISATIES
 operatoren = ["+", "-", "*", "/"]
