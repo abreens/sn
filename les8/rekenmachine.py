@@ -51,12 +51,11 @@ print("LES 8 - DE SMARTNINJA REKENMACHINE\n")
 
 # INLEZEN VAN DE TWEE GETALLEN
 getal1 = lees_getal("getal 1")
-getal2 = lees_getal("getal_2")
+getal2 = lees_getal("getal 2")
 
 # DE INGEVOERDE GETALLEN AFDRUKKEN
 print("Getal 1 was: ", getal1)
 print("Getal 2 was: ", getal2)
-print("\n")
 
 # INLEZEN VAN DE OPERATOR
 operator = lees_operator()
@@ -64,5 +63,5 @@ operator = lees_operator()
 # DE INGEVOERDE OPERATOR AFDRUKKEN
 print("De ingevoerde operator was: " + operator + "\n")
 
-# DE BEREKENING UITVOEREN
+# DE BEREKENING  EN AFDRUKKEN
 print(getal1, " ", operator, " ", getal2, " = ", resultaat(getal1, getal2, operator))
