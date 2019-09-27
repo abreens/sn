@@ -6,28 +6,33 @@
 #
 #####
 
-# FUNKTIE - LEES GETAL
-def lees_getal(omschrijving):
-    notOK = True
-    while notOK:
-        invoer = input("Geef " + omschrijving + " aub: ")
-        if invoer.isdigit():
-            print("Dit was een getal. Proficiat!\n")
-            notOK = False
-        else:
-            print("Jammer genoeg was dit geen getal. Probeer aub opnieuw...\n")
-    return int(invoer)
-
-# FUNKTIE - LEES OPERATOR
-def lees_operator():
-    invoer = "een_duveltje"
-    while (invoer not in operatoren):
-        invoer = input("Geef een operator aub: ")
-        if (invoer in operatoren):
-            print("Dit was een correcte operator. Proficiat!\n")
-        else:
-            print("Jammer genoeg was dit geen correcte operator. Probeer aub opnieuw...\n")
-    return (invoer)
+##### FUNKTIE - LEES EEN GETAL ("g") OF EEN OPERATOR ("o")
+def lees(soort, omschrijving):
+    if soort == "g":
+        # Een GETAL inlezen en kontroleren
+        notOK = True
+        while notOK:
+            invoer = input("Geef een geheel " + omschrijving + " aub: ")
+            try:
+                getal = int(invoer)
+            except ValueError:
+                print("Jammer genoeg was dit geen (geheel) getal. Probeer aub opnieuw...\n")
+            else:
+                print("Dit was een correcte invoer. Dank U wel!\n")
+                # De lus breken
+                notOK = False
+        return (getal)
+    else:
+        # Een OPERATOR inlezen en kontroleren
+        operatoren = ["+", "-", "*", "/"]
+        invoer = ""
+        while (invoer not in operatoren):
+            invoer = input("Geef een operator aub ('+' of '-' of '*' of '/'): ")
+            if (invoer in operatoren):
+                print("Dit was een correcte operator. Proficiat!\n")
+            else:
+                print("Jammer genoeg was dit geen correcte operator. Probeer aub opnieuw...\n")
+        return (invoer)
 
 # FUNKTIE - RESULTAAT BEREKENEN
 def resultaat (i, j, o):
@@ -43,25 +48,27 @@ def resultaat (i, j, o):
         else:
             return i / j
 
-# INITIALISATIES
-operatoren = ["+", "-", "*", "/"]
-
 # TITEL AFDRUKKEN
 print("LES 8 - DE SMARTNINJA REKENMACHINE\n")
 
 # INLEZEN VAN DE TWEE GETALLEN
-getal1 = lees_getal("getal 1")
-getal2 = lees_getal("getal 2")
+getal1 = lees("g", "getal 1")
+getal2 = lees("g", "getal 2")
 
-# DE INGEVOERDE GETALLEN AFDRUKKEN
+# DE INGEVOERDE GETALLEN EVEN AFDRUKKEN - JUST FOR FUN ;)
 print("Getal 1 was: ", getal1)
 print("Getal 2 was: ", getal2)
+print("\n")
 
-# INLEZEN VAN DE OPERATOR
-operator = lees_operator()
+# INLEZEN VAN DE OPERATOR. DE TWEEDE PARAMETER HEEFT HIER GEEN EFFECT. DE EERSTE OOK NIET EIGENLIJK ZOLANG DIE MAAR NIET "g" IS ;)
+operator = lees("o", "")
 
-# DE INGEVOERDE OPERATOR AFDRUKKEN
+# DE INGEVOERDE OPERATOR AFDRUKKEN - OOK WEER JUST FOR FUN ;)
 print("De ingevoerde operator was: " + operator + "\n")
 
-# DE BEREKENING  EN AFDRUKKEN
-print(getal1, " ", operator, " ", getal2, " = ", resultaat(getal1, getal2, operator))
+# DOE DE BEREKENING EN DRUK HET RESULTAAT AF
+print("Het resultaat is...")
+print(str(getal1) + " " + operator + " " + str(getal2) + " = " + str(resultaat(getal1, getal2, operator)) + "\n")
+
+# AFSCHEID
+print("Bedankt voor het gebruiken van onze RM service. Tot ziens!")
