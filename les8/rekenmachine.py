@@ -6,7 +6,7 @@
 #
 #####
 
-##### FUNKTIE - LEES EEN GETAL ("g") OF EEN OPERATOR ("o")
+# FUNKTIE - LEES EEN GETAL ("g") OF EEN OPERATOR ("o")
 def lees(soort, omschrijving):
     if soort == "g":
         # Een GETAL inlezen en kontroleren
