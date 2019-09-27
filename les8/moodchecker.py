@@ -1,4 +1,4 @@
-mood = input("What is your mood today ('happy' or 'nervous' or 'sad' or 'excited')? ")
+mood = input("What is your mood today ('happy' or 'nervous' or 'sad' or 'excited' or 'relaxed')? ")
 
 if mood == "happy":
     print("It is great to see you happy. Celebrate with a DUVEL!")
