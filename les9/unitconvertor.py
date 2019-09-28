@@ -48,7 +48,7 @@ while True:
     invoer = input("Wil U nog een convertie doen (j/n)? ")
 
     # 6. Enkel "n" zal het programma stoppen. Bij elke andere invoer doen we het gewoon nog eens ;)
-    if invoer == "n":
+    if invoer.lower() == "n":
         break
 
 # 7. Afscheid
