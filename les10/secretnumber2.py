@@ -27,7 +27,6 @@ def leesgeheel():
                 print("Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw...")
     return (getal)
 
-
 # 1. Initialisaties
 secret = random.randint(1, 30)
 attempts = 0
