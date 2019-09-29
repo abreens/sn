@@ -7,3 +7,10 @@ Les3 - Mimic the Google startup page as detailed as possible (BOOGLE)
 Les4 - Rehersal lesson (NO HOME WORK)
 Les5 - Hair Dresser Hans website
 Les6 - Create a repository on GitHub and upload all your previous home work
+Les 7 - Rehersal lesson (NO HOME WORK)
+Les 8 - Moodchecker, Rekenmachine en Secret Number
+Les 9 - Fizz Buzz, Make lower case en Unit Convertor
+Les 10 - Secret Number (2)
+Les 11 - Add more data, Add unsuccessful guesses, only Top 3 and Forensics
+
+ 
