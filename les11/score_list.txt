@@ -1,0 +1,1 @@
+[{"attempts": 8, "date": "2019-09-29 11:57:29.410276", "speler": "Axel", "secret": 1}, {"attempts": 7, "date": "2019-09-29 12:23:32.666575", "speler": "Axel", "secret": 30}, {"attempts": 3, "date": "2019-09-29 12:24:18.561830", "speler": "Indra", "secret": 5}, {"attempts": 7, "date": "2019-09-29 12:24:46.831756", "speler": "Selvi", "secret": 30}]
