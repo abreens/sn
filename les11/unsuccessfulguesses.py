@@ -46,11 +46,12 @@ attempts = 0
 dts = str(datetime.datetime.now())  # dts = Date Time Stamp
 wrong_guesses = []
 
-# 2. Naam van de speler inlezen
-naam = leesnaam()
+# 2. Welcome
+print("Dit is het 'Guess the Secret Number' spel!\n")
 
-# 3. Welcome
-print("Welkom bij het 'Guess the Secret Number' spel, " + naam + "!\n")
+# 3. Naam van de speler inlezen
+naam = leesnaam()
+print("Welkom, " + naam + "!\n")
 
 # 4. De huidige top scores uitlezen en afdrukken
 print("De huidige top scores zijn:")
@@ -63,16 +64,12 @@ with open("score_list.txt", "r") as score_file:
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
     guess = leesgeheel()
-    # De guesses dynamisch opslaan in lijst wrong_guesses en attempts teller ophogen
-    wrong_guesses.append(guess)
     attempts += 1
 
     # Het antwoord analyseren
     if guess == secret:
         print("\nYou've guessed it - congratulations! It's number " + str(secret))
         print("Attempts needed: " + str(attempts))
-        # Het laatste getal terug uit de wrong_guesses lijst halen want technisch gezien is dit geen 'wrong' guess ;)
-        del wrong_guesses[-1]
         print("Dit waren Uw verkeerde keuzes: ", wrong_guesses)
 
         # Het aantal pogingen toevoegen aan de score_list.txt file
@@ -87,6 +84,9 @@ while True:
         print("Sorry, your guess is not correct... Try something smaller")
     elif guess < secret:
         print("Sorry, your guess is not correct... Try something bigger")
+
+    # De guesses dynamisch opslaan in lijst wrong_guesses
+    wrong_guesses.append(guess)
 
 # 6. Afscheid
 print("\nBedankt voor het spelen. Hope to see you soon...")
