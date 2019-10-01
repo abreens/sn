@@ -54,12 +54,17 @@ naam = leesnaam()
 print("Welkom, " + naam + "!\n")
 
 # 4. De huidige top scores uitlezen en afdrukken
-print("De huidige top scores zijn:")
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
-    for score_dict in score_list:
-        print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("date") + ", speler: "
-        + score_dict.get("speler") + ", secret: " + str(score_dict["secret"]))
+    # Empty lists return False
+    if not score_list:
+        print("Er zijn nog geen top scores opgeladen!")
+    else:
+        print("De huidige top scores zijn:")
+        for score_dict in score_list:
+            print("On " + score_dict.get("date") + ", player " + score_dict.get("speler") + " needed " +
+            str(score_dict.get("attempts")) + " attempts to guess the secret number " +
+            str(score_dict.get("secret")) + ". Wrong guesses were: " + str(score_dict.get("wrong_guesses")))
 
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
@@ -72,8 +77,9 @@ while True:
         print("Attempts needed: " + str(attempts))
         print("Dit waren Uw verkeerde keuzes: ", wrong_guesses)
 
-        # Het aantal pogingen toevoegen aan de score_list.txt file
-        score_list.append({"attempts": attempts, "date": dts, "speler": naam, "secret": secret})
+        # De score_list.txt file updaten en wegschrijven
+        score_list.append({"attempts": attempts, "date": dts, "speler": naam, "secret": secret,
+                           "wrong_guesses": wrong_guesses})
         with open("score_list.txt", "w") as score_file:
             score_file.write(json.dumps(score_list))
         # De lus breken
@@ -85,7 +91,7 @@ while True:
     elif guess < secret:
         print("Sorry, your guess is not correct... Try something bigger")
 
-    # De guesses dynamisch opslaan in lijst wrong_guesses
+    # De huidige guess dynamisch opslaan in lijst wrong_guesses
     wrong_guesses.append(guess)
 
 # 6. Afscheid
