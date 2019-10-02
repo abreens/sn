@@ -18,15 +18,18 @@
 def lees_getal():
     while True:
         # 3. Kilometers inlezen
-        invoer = input("\nGeef een getal als kilometers aub (gebruik een . om een decimaal getal in te voeren!): ")
+        invoer = input("\nGeef een positief getal als kilometers aub (gebruik een . om een decimaal getal in te voeren!): ")
         try:
             getal = float(invoer)
         except:
             print("Dat was geen correcte invoer. Probeer aub opnieuw...")
         else:
-            print("Dit was een correcte invoer. Dank U wel!\n")
-            # De lus breken
-            break
+            if getal > 0:
+                print("Dit was een correcte invoer. Dank U wel!\n")
+                # De lus breken
+                break
+            else:
+                print("Gelieve een positief getal (verschillend van 0) als kilometers in te geven aub...")
     return (getal)
 
 # Initialisaties
