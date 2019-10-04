@@ -60,15 +60,21 @@ print("Getal 1 was: ", getal1)
 print("Getal 2 was: ", getal2)
 print("\n")
 
-# INLEZEN VAN DE OPERATOR. DE TWEEDE PARAMETER HEEFT HIER GEEN EFFECT. DE EERSTE OOK NIET EIGENLIJK ZOLANG DIE MAAR NIET "g" IS ;)
+# INLEZEN VAN DE OPERATOR. DE TWEEDE PARAMETER HEEFT HIER GEEN EFFECT.
+# DE EERSTE OOK NIET EIGENLIJK ZOLANG DIE MAAR NIET "g" IS ;)
 operator = lees("o", "")
 
 # DE INGEVOERDE OPERATOR AFDRUKKEN - OOK WEER JUST FOR FUN ;)
 print("De ingevoerde operator was: " + operator + "\n")
 
 # DOE DE BEREKENING EN DRUK HET RESULTAAT AF
+uitkomst = str(resultaat(getal1, getal2, operator))
+# Het resultaat wordt op verschillende manieren afgedrukt
 print("Het resultaat is...")
-print(str(getal1) + " " + operator + " " + str(getal2) + " = " + str(resultaat(getal1, getal2, operator)) + "\n")
+print(str(getal1) + " " + operator + " " + str(getal2) + " = " + uitkomst)
+print(str(getal1), operator, str(getal2), "=", uitkomst)
+print("{} {} {} = {}".format(getal1, operator, getal2, uitkomst))
+print("%s %s %s = %s" % (getal1, operator, getal2, uitkomst))
 
 # AFSCHEID
-print("Bedankt voor het gebruiken van onze RM service. Tot ziens!")
+print("\nBedankt voor het gebruiken van onze RM service. Tot ziens!")
