@@ -59,6 +59,7 @@ while True:
     elif guess > secret:
         print("Sorry, your guess is not correct... Try something smaller")
 
-    elif guess < secret:
+    # guess moet nu wel strikt kleiner zijn dan secret
+    else:
         print("Sorry, your guess is not correct... Try something bigger")
 
