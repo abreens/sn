@@ -59,16 +59,20 @@ with open("score_list.txt", "r") as score_file:
     if not score_list:
         print("Er zijn nog geen top scores opgeladen!")
     else:
-        print("De top 3 scores zijn:")
+        print("De top scores zijn:")
 
         # Sort the list of dictionaries per attempts and keep only the top 3 best scores
         new_score_list = sorted(score_list, key=lambda k: k['attempts'])[:3]
 
         # Print the new sorted scores
         for score_dict in new_score_list:
-            print("On " + score_dict.get("date") + ", player " + score_dict.get("speler") + " needed " +
-            str(score_dict.get("attempts")) + " attempts to guess the secret number " +
-            str(score_dict.get("secret")) + ". Wrong guesses were: " + str(score_dict.get("wrong_guesses")))
+            print("Speler {} had op {} {} pogingen nodig om het geheim getal {} te raden. Wrong guesses: {}".format(
+                score_dict.get("speler"),
+                score_dict.get("date"),
+                str(score_dict.get("attempts")),
+                str(score_dict.get("secret")),
+                str(score_dict.get("wrong_guesses"))
+                ))
 
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
@@ -92,7 +96,7 @@ while True:
     # Het getal werd niet geraden. Tips voor de speler meegeven.
     elif guess > secret:
         print("Sorry, your guess is not correct... Try something smaller")
-    elif guess < secret:
+    else:
         print("Sorry, your guess is not correct... Try something bigger")
 
     # De huidige guess dynamisch opslaan in lijst wrong_guesses

@@ -79,7 +79,7 @@ while True:
     # Het getal werd niet geraden. Tips voor de speler meegeven.
     elif guess > secret:
         print("Sorry, your guess is not correct... Try something smaller")
-    elif guess < secret:
+    else:
         print("Sorry, your guess is not correct... Try something bigger")
 
 # 6. Afscheid
