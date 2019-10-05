@@ -5,48 +5,78 @@
 # and now it's completely empty. But the criminal made a fatal mistake. S/he left a spoon inside the
 # container and with a spoon also his/her DNA. A perfect case for our CSI investigators!
 #
-# Raphael --> als 1 eigenschap van een persoon niet in de DNA string staat mag je de loop al skippen
-#
 #####
-'''
-# Nodige external packages importeren
+
+### 0. NODIGE EXTERNAL PACKAGES IMPORTEREN
 import json
 
-# 1. Welcome
+### 1. WELCOME
 print("Dit is het CSI Forensics Icecream onderzoek\n")
 
-# 2. De dna.txt file openen en inlezen als string
+### 2. DE DNA.TXT FILE INLEZEN
 with open("dna.txt", "r") as dna_file:
     dna = dna_file.read()
-print(dna)
 
-#3. Initialisatie van de variabelen
-# Hair color variabelen
+###3. INITIALISATIE VAN DE VARIABELEN
+# 3.1 Hair color variabelen
 black = "CCAGCAATCGC"
 brown =  "GCCAGTGCCG"
 blonde = "TTAGCTATCGC"
 
-# Facial shape variabelen
+# 3.2 Facial shape variabelen
 square = "GCCACGG"
 round = "ACCACAA"
 oval = "AGGCCTCA"
 
-# Eye color variabelen
+# 3.3 Eye color variabelen
 blue = "TTGTGGTGGC"
 green = "GGGAGGTGGC"
 brown = "AAGTAGTGAC"
 
-# Gender variabelen
+# 3.4 Gender variabelen
 female = "TGAAGGACCTTC"
 male = "TGCAGGAACTTC"
 
-# Race variabelen
+# 3.5 Race variabelen
 white = "AAAACCTCA"
 black = "CGACTACAG"
-asian =  "CGCGGGCCG"
+asian = "CGCGGGCCG"
 
-# 6. Afscheid
+### 4. DE LIJST MET VERDACHTEN SAMENSTELLEN
+verdachten = [{"name": "Eva", "gender": female, "race": white, "hair": blonde, "eye": blue, "face": oval},
+              {"name": "Larisa", "gender": female, "race": white, "hair": brown, "eye": brown, "face": oval},
+              {"name": "Matej", "gender": male, "race": white, "hair": black, "eye": blue, "face": oval},
+              {"name": "Miha", "gender": male, "race": white, "hair": brown, "eye": green, "face": square}]
+
+### 5. HET ONDERZOEK
+print("Analysing...\n")
+
+dader = ""
+meeste = 0
+for i in verdachten:
+    match = 0
+    if i["gender"] in dna:
+        match += 1
+    if i["race"] in dna:
+        match += 1
+    if i["hair"] in dna:
+        match += 1
+    if i["eye"] in dna:
+        match += 1
+    if i["face"] in dna:
+        match += 1
+
+    # Tussentijds resultaat afdrukken
+    print ("{} heeft {} overeenkomst(en) in de DNA file".format(i["name"], match))
+
+    # De dader is diegene met het meeste matches
+    if match > meeste:
+        meeste = match
+        dader = i["name"]
+
+# Het resultaat van de anylyse afdrukken
+print("\n" + dader.upper() + " is de dader met " + str(meeste) + " matches in de DNA file!")
+
+### 6. Afscheid
 print("\nBedankt voor het gebruiken van onze CSI service. Hope to see you soon...")
-'''
-for i in range(5):
-    print(i, end=", ")
+
