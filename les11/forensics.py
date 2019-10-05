@@ -79,4 +79,3 @@ print("\n" + dader.upper() + " is de dader met " + str(meeste) + " matches in de
 
 ### 6. Afscheid
 print("\nBedankt voor het gebruiken van onze CSI service. Hope to see you soon...")
-
