@@ -8,7 +8,10 @@
 #####
 
 # Nodige external packages importeren
-import random, json, datetime
+import random
+import json
+import datetime
+
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 30
 def leesgeheel():
@@ -19,13 +22,14 @@ def leesgeheel():
         except ValueError:
             print("Jammer genoeg was dit geen (geheel) getal. Probeer aub opnieuw...")
         else:
-            if getal >= 1 and getal <= 30:
+            if 1 <= getal <= 30:
                 print("Dit was een correcte invoer! Wij analyseren nu het resultaat...")
                 # De lus breken
                 break
             else:
                 print("Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw...")
-    return (getal)
+    return getal
+
 
 # FUNKTIE - Inlezen van de naam van de speler
 def leesnaam():
@@ -38,7 +42,8 @@ def leesnaam():
             print("Dat was een correcte invoer. We gaan verder met het spel...\n")
             # De lus breken
             break
-    return(name)
+    return name
+
 
 # 1. Initialisaties
 secret = random.randint(1, 30)
@@ -57,7 +62,7 @@ with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
     for score_dict in score_list:
         print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("date") + ", speler: "
-        + score_dict.get("speler") + ", secret: " + str(score_dict["secret"]))
+              + score_dict.get("speler") + ", secret: " + str(score_dict["secret"]))
 
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
