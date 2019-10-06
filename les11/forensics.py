@@ -7,31 +7,31 @@
 #
 #####
 
-### 0. NODIGE EXTERNAL PACKAGES IMPORTEREN
+# 0. NODIGE EXTERNAL PACKAGES IMPORTEREN
 import json
 
-### 1. WELCOME
+# 1. WELCOME
 print("Dit is het CSI Forensics Icecream onderzoek\n")
 
-### 2. DE DNA.TXT FILE INLEZEN
+# 2. DE DNA.TXT FILE INLEZEN
 with open("dna.txt", "r") as dna_file:
     dna = dna_file.read()
 
-###3. INITIALISATIE VAN DE VARIABELEN
+# 3. INITIALISATIE VAN DE VARIABELEN
 # 3.1 Hair color variabelen
-black = "CCAGCAATCGC"
-brown =  "GCCAGTGCCG"
+black_hair = "CCAGCAATCGC"
+brown_hair = "GCCAGTGCCG"
 blonde = "TTAGCTATCGC"
 
 # 3.2 Facial shape variabelen
 square = "GCCACGG"
-round = "ACCACAA"
+round_face = "ACCACAA"
 oval = "AGGCCTCA"
 
 # 3.3 Eye color variabelen
 blue = "TTGTGGTGGC"
 green = "GGGAGGTGGC"
-brown = "AAGTAGTGAC"
+brown_eyes = "AAGTAGTGAC"
 
 # 3.4 Gender variabelen
 female = "TGAAGGACCTTC"
@@ -39,16 +39,16 @@ male = "TGCAGGAACTTC"
 
 # 3.5 Race variabelen
 white = "AAAACCTCA"
-black = "CGACTACAG"
+black_race = "CGACTACAG"
 asian = "CGCGGGCCG"
 
-### 4. DE LIJST MET VERDACHTEN SAMENSTELLEN
+# 4. DE LIJST MET VERDACHTEN SAMENSTELLEN
 verdachten = [{"name": "Eva", "gender": female, "race": white, "hair": blonde, "eye": blue, "face": oval},
-              {"name": "Larisa", "gender": female, "race": white, "hair": brown, "eye": brown, "face": oval},
-              {"name": "Matej", "gender": male, "race": white, "hair": black, "eye": blue, "face": oval},
-              {"name": "Miha", "gender": male, "race": white, "hair": brown, "eye": green, "face": square}]
+              {"name": "Larisa", "gender": female, "race": white, "hair": brown_hair, "eye": brown_eyes, "face": oval},
+              {"name": "Matej", "gender": male, "race": white, "hair": black_hair, "eye": blue, "face": oval},
+              {"name": "Miha", "gender": male, "race": white, "hair": brown_hair, "eye": green, "face": square}]
 
-### 5. HET ONDERZOEK
+# 5. HET ONDERZOEK
 print("Analysing...\n")
 
 dader = ""
@@ -77,5 +77,5 @@ for i in verdachten:
 # Het resultaat van de anylyse afdrukken
 print("\n" + dader.upper() + " is de dader met " + str(meeste) + " matches in de DNA file!")
 
-### 6. Afscheid
+# 6. Afscheid
 print("\nBedankt voor het gebruiken van onze CSI service. Hope to see you soon...")
