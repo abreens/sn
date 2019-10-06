@@ -10,6 +10,7 @@
 
 import random
 
+
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 30
 def leesgeheel():
     while True:
@@ -19,13 +20,14 @@ def leesgeheel():
         except ValueError:
             print("Jammer genoeg was dit geen (geheel) getal. Probeer aub opnieuw...")
         else:
-            if getal >= 1 and getal <= 30:
+            if 1 <= getal <= 30:
                 print("Dit was een correcte invoer! Wij analyseren nu het resultaat...")
                 # De lus breken
                 break
             else:
                 print("Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw...")
-    return (getal)
+    return getal
+
 
 # 1. Initialisaties
 secret = random.randint(1, 30)
@@ -62,4 +64,3 @@ while True:
     # guess moet nu wel strikt kleiner zijn dan secret
     else:
         print("Sorry, your guess is not correct... Try something bigger")
-
