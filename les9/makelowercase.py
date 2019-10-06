@@ -17,5 +17,4 @@ print("\nConverting...")
 print(s.lower())
 
 # Afscheid
-print ("\nBedankt voor het gebruiken van onze service!")
-
+print("\nBedankt voor het gebruiken van onze service!")
