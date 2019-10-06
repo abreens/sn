@@ -7,9 +7,6 @@
 #
 #####
 
-# 0. NODIGE EXTERNAL PACKAGES IMPORTEREN
-import json
-
 # 1. WELCOME
 print("Dit is het CSI Forensics Icecream onderzoek\n")
 
@@ -67,7 +64,7 @@ for i in verdachten:
         match += 1
 
     # Tussentijds resultaat afdrukken
-    print ("{} heeft {} overeenkomst(en) in de DNA file".format(i["name"], match))
+    print("{} heeft {} overeenkomst(en) in de DNA file".format(i["name"], match))
 
     # De dader is diegene met het meeste matches
     if match > meeste:

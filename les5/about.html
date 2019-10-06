@@ -52,7 +52,7 @@
                 $('#imgLarge').fadeOut(500, function() {
                     $("#imgLarge").attr('src', bron).fadeIn();
                 });
-            })
+            });
             
             // Pijltje links en rechts indrukken afvangen
             $(document).on('keydown', function(e) { 
@@ -64,7 +64,7 @@
                             positie = 3;
                         } else {
                         positie = positie - 1;
-                        };
+                        }
                         $("#imgLarge").attr('src', fotos[positie]);
                         break;
                     }
@@ -74,7 +74,7 @@
                             positie = 0;
                         } else {
                         positie = positie + 1;
-                        };
+                        }
                         $("#imgLarge").attr('src', fotos[positie]);
                         break;
                     }
