@@ -1,1 +1,0 @@
-[{"attempts": 4, "date": "2019-10-05 16:54:36.473373", "speler": "Axel", "secret": 16, "wrong_guesses": [15, 22, 17]}, {"attempts": 3, "date": "2019-10-05 16:58:55.129549", "speler": "Axel", "secret": 10, "wrong_guesses": [15, 7]}]

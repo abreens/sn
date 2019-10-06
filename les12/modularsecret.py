@@ -14,7 +14,9 @@
 #####
 
 # Nodige external packages importeren
-import random, json, datetime
+import random
+import json
+import datetime
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en <upper_limit>
 def lees_geheel(upper_limit):
@@ -44,11 +46,10 @@ def lees_naam():
             break
     return(name)
 
-# FUNKTIE - Inlezen van een letter van lijst [mogelijkheden]
-# Zowel kleine als hoofdletter zijn toegestaan. msg is de boodschap voor de gebruiker
-def lees_letter(msg, mogelijkheden):
+# FUNKTIE - Inlezen v/e letter van lijst [mogelijkheden]. Zowel kleine als hoofdletter zijn toegestaan.
+def lees_letter(msg_for_user, mogelijkheden):
     while True:
-        invoer = input(msg)
+        invoer = input(msg_for_user)
         invoer = invoer.upper()
         if invoer in mogelijkheden:
             return(invoer)
@@ -85,6 +86,10 @@ def play_game(name, level):
     dts = str(datetime.datetime.now())  # dts = Date Time Stamp
     wrong_guesses = []
 
+    # De score file openen en inlezen
+    with open("score_list.txt", "r") as score_file:
+        score_list = json.loads(score_file.read())
+
     while True:
         guess = lees_geheel(30)
         attempts += 1
@@ -97,13 +102,10 @@ def play_game(name, level):
             print()
 
             # De score_list.txt file updaten en wegschrijven
-            with open("score_list.txt", "r") as score_file:
-                score_list = json.loads(score_file.read())
-                score_list.append({"attempts": attempts, "date": dts, "speler": name, "secret": secret,
+            score_list.append({"attempts": attempts, "date": dts, "speler": name, "secret": secret,
                                    "wrong_guesses": wrong_guesses})
             with open("score_list.txt", "w") as score_file:
                 score_file.write(json.dumps(score_list))
-
             # De lus breken
             break
 
