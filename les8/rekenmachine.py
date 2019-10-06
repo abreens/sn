@@ -6,12 +6,13 @@
 #
 #####
 
+
 # FUNKTIE - LEES EEN GETAL ("g") OF EEN OPERATOR ("o")
 def lees(soort, omschrijving):
     if soort == "g":
         # Een GETAL inlezen en kontroleren
-        notOK = True
-        while notOK:
+        notok = True
+        while notok:
             invoer = input("Geef een geheel " + omschrijving + " aub: ")
             try:
                 getal = int(invoer)
@@ -20,22 +21,23 @@ def lees(soort, omschrijving):
             else:
                 print("Dit was een correcte invoer. Dank U wel!\n")
                 # De lus breken
-                notOK = False
-        return (getal)
+                notok = False
+        return getal
     else:
         # Een OPERATOR inlezen en kontroleren
         operatoren = ["+", "-", "*", "/"]
         invoer = ""
-        while (invoer not in operatoren):
+        while invoer not in operatoren:
             invoer = input("Geef een operator aub ('+' of '-' of '*' of '/'): ")
-            if (invoer in operatoren):
+            if invoer in operatoren:
                 print("Dit was een correcte operator. Proficiat!\n")
             else:
                 print("Jammer genoeg was dit geen correcte operator. Probeer aub opnieuw...\n")
-        return (invoer)
+        return invoer
+
 
 # FUNKTIE - RESULTAAT BEREKENEN
-def resultaat (i, j, o):
+def resultaat(i, j, o):
     if o == "+":
         return i + j
     elif o == "-":
@@ -44,9 +46,10 @@ def resultaat (i, j, o):
         return i * j
     elif o == "/":
         if j == 0:
-            return("DIV BY ZERO ERROR!!!")
+            return "DIV BY ZERO ERROR!!!"
         else:
             return i / j
+
 
 # TITEL AFDRUKKEN
 print("LES 8 - DE SMARTNINJA REKENMACHINE\n")
