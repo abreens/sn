@@ -14,14 +14,16 @@
 #
 #####
 
+
 # FUNKTIE - Lees een (decimaal) getal
 def lees_getal():
     while True:
         # 3. Kilometers inlezen
-        invoer = input("\nGeef een positief getal als kilometers aub (gebruik een . om een decimaal getal in te voeren!): ")
+        invoer = input(
+            "\nGeef een positief getal als kilometers aub (gebruik een . om een decimaal getal in te voeren!): ")
         try:
             getal = float(invoer)
-        except:
+        except ValueError:
             print("Dat was geen correcte invoer. Probeer aub opnieuw...")
         else:
             if getal > 0:
@@ -30,7 +32,8 @@ def lees_getal():
                 break
             else:
                 print("Gelieve een positief getal (verschillend van 0) als kilometers in te geven aub...")
-    return (getal)
+    return getal
+
 
 # Initialisaties
 factor = 0.62138818119679
