@@ -9,6 +9,7 @@
 #
 #####
 
+
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 100
 def leesgeheel():
     while True:
@@ -18,13 +19,14 @@ def leesgeheel():
         except ValueError:
             print("Jammer genoeg was dit geen (geheel) getal. Probeer aub opnieuw...")
         else:
-            if getal >= 1 and getal <= 100:
+            if 1 <= getal <= 100:
                 print("Dit was een correcte invoer! Het spel zal nu beginnen...")
                 # De lus breken
                 break
             else:
                 print("Het getal moet tussen 1 en 100 liggen. Probeer aub opnieuw...")
-    return (getal)
+    return getal
+
 
 # Welcome
 print("Welcome to the Smartninja FIZZBUZZ game!")
@@ -36,14 +38,14 @@ aantal = leesgeheel()
 i = 1
 while i <= aantal:
     if i % 3 == 0 and i % 5 == 0:
-        print ("FIZZBUZZ")
+        print("FIZZBUZZ")
     elif i % 3 == 0:
-        print ("Fizz")
+        print("Fizz")
     elif i % 5 == 0:
-        print ("Buzz")
+        print("Buzz")
     else:
         print(i)
     i += 1
 
 # Einde
-print ("Einde!")
+print("Einde!")
