@@ -10,10 +10,12 @@
 #
 #####
 
+
 # De nodige external modules importeren
 import random
 import json
 import datetime
+
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en <upper_limit>
 def lees_geheel(upper_limit):
@@ -24,12 +26,13 @@ def lees_geheel(upper_limit):
         except ValueError:
             print("Jammer genoeg was dit geen (geheel) getal. Probeer aub opnieuw...")
         else:
-            if getal >= 1 and getal <= upper_limit:
+            if 1 <= getal <= upper_limit:
                 # De lus breken
                 break
             else:
                 print("Het getal moet tussen 1 en " + str(upper_limit) + " liggen. Probeer aub opnieuw...")
-    return (getal)
+    return getal
+
 
 # FUNKTIE - Inlezen van de naam van de speler
 def lees_naam():
@@ -41,7 +44,8 @@ def lees_naam():
         else:
             # De lus breken
             break
-    return(name)
+    return name
+
 
 # FUNKTIE - Letter inlezen van lijst [mogelijkheden]. Zowel kleine als hoofdletter zijn toegestaan.
 def lees_letter(msg_for_user, mogelijkheden):
@@ -53,7 +57,8 @@ def lees_letter(msg_for_user, mogelijkheden):
             break
         else:
             print("Dat was geen correct invoer. probeert U het aub opnieuw...\n")
-    return(invoer)
+    return invoer
+
 
 # FUNKTIE - Toon de huidige top 3 scores
 def get_top_scores():
@@ -71,13 +76,13 @@ def get_top_scores():
         # Print the new sorted scores
         for score_dict in new_score_list:
             print("Speler {} had op {} {} poging(en) nodig om het geheim getal {} te raden. Wrong guesses: {}"
-                .format(score_dict.get("speler"), score_dict.get("date"), str(score_dict.get("attempts")),
-                str(score_dict.get("secret")), str(score_dict.get("wrong_guesses"))))
+                  .format(score_dict.get("speler"), score_dict.get("date"), str(score_dict.get("attempts")),
+                          str(score_dict.get("secret")), str(score_dict.get("wrong_guesses"))))
         print()
 
-# FUNKTIE - Speel het spel
-def play_game(name, level):
 
+# FUNKTIE - Speel het spel
+def play_game(name, lvl):
     # Initialisaties
     secret = random.randint(1, 30)
     attempts = 0
@@ -105,7 +110,7 @@ def play_game(name, level):
 
             # De score_list.txt file updaten en wegschrijven
             score_list.append({"attempts": attempts, "date": dts, "speler": name, "secret": secret,
-                                   "wrong_guesses": wrong_guesses})
+                               "wrong_guesses": wrong_guesses})
             with open("score_list.txt", "w") as score_file:
                 score_file.write(json.dumps(score_list))
             # De lus breken
@@ -114,7 +119,7 @@ def play_game(name, level):
         else:
             # Het getal werd niet geraden.
             print("Sorry, Uw gok is niet correct...")
-            if level == "easy":
+            if lvl == "easy":
                 # Een tip voor de gebruiker meegeven als mode 'Easy' is
                 if guess > secret:
                     print("Tip: try something smaller")
@@ -122,6 +127,7 @@ def play_game(name, level):
                     print("Tip: try something bigger")
         # De huidige guess dynamisch opslaan in lijst wrong_guesses
         wrong_guesses.append(guess)
+
 
 # 1. Welcome
 print("\nDit is het 'Guess the Secret Number' spel!\n")
