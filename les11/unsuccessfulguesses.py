@@ -7,8 +7,12 @@
 # under the name "wrong_guesses". Hint: you can store a list in a dictionary. ;)
 #####
 
+
 # Nodige external packages importeren
-import random, json, datetime
+import random
+import json
+import datetime
+
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 30
 def leesgeheel():
@@ -19,13 +23,14 @@ def leesgeheel():
         except ValueError:
             print("Jammer genoeg was dit geen (geheel) getal. Probeer aub opnieuw...")
         else:
-            if getal >= 1 and getal <= 30:
+            if 1 <= getal <= 30:
                 print("Dit was een correcte invoer! Wij analyseren nu het resultaat...")
                 # De lus breken
                 break
             else:
                 print("Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw...")
-    return (getal)
+    return getal
+
 
 # FUNKTIE - Inlezen van de naam van de speler
 def leesnaam():
@@ -38,7 +43,8 @@ def leesnaam():
             print("Dat was een correcte invoer. We gaan verder met het spel...\n")
             # De lus breken
             break
-    return(name)
+    return name
+
 
 # 1. Initialisaties
 secret = random.randint(1, 30)
@@ -63,8 +69,8 @@ with open("score_list.txt", "r") as score_file:
         print("De huidige top scores zijn:")
         for score_dict in score_list:
             print("On " + score_dict.get("date") + ", player " + score_dict.get("speler") + " needed " +
-            str(score_dict.get("attempts")) + " attempts to guess the secret number " +
-            str(score_dict.get("secret")) + ". Wrong guesses were: " + str(score_dict.get("wrong_guesses")))
+                  str(score_dict.get("attempts")) + " attempts to guess the secret number " +
+                  str(score_dict.get("secret")) + ". Wrong guesses were: " + str(score_dict.get("wrong_guesses")))
 
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
