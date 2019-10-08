@@ -13,7 +13,7 @@ import random
 
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 30
-def leesgeheel():
+def lees_geheel():
     while True:
         invoer = input("\nGuess the secret number (between 1 and 30): ")
         try:
@@ -45,7 +45,7 @@ with open("score.txt", "r") as score_file:
 
 # 4. Een geheim getal tussen 1 en 30 raden
 while True:
-    guess = leesgeheel()
+    guess = lees_geheel()
     attempts += 1
 
     if guess == secret:
