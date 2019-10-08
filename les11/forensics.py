@@ -8,7 +8,7 @@
 #####
 
 # 1. WELCOME
-print("Dit is het CSI Forensics Icecream onderzoek\n")
+print("Dit is het CSI Forensics Ice Cream onderzoek\n")
 
 # 2. DE DNA.TXT FILE INLEZEN
 with open("dna.txt", "r") as dna_file:
