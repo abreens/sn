@@ -38,7 +38,6 @@ print("Welkom bij het 'Guess the Secret Number' spel")
 
 # 3. De huidige top score uitlezen en afdrukken
 with open("score.txt", "r") as score_file:
-    # best_score = int(score_file.read())
     best_score = score_file.read()
     print("Huidige Top Score (attempts): " + best_score)
     best_score = int(best_score) if best_score.isdigit() else None
