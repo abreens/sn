@@ -1,4 +1,5 @@
 #####
+#
 # Les 12 - Make the "Guess the secret number" game more modular
 #
 # Use functions to make the game more modular. Also try to add another while loop so the user can play
@@ -56,7 +57,7 @@ def lees_letter(msg_for_user, mogelijkheden):
             # De lus breken
             break
         else:
-            print("Dat was geen correct invoer. probeert U het aub opnieuw...\n")
+            print("Dat was geen correct invoer. Probeert U het aub opnieuw...\n")
     return invoer
 
 
