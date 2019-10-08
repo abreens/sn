@@ -38,18 +38,18 @@ def speel_quiz(dict_capitals, aantal_pogingen):
 
     # Een willekeurig land en hoofdstad selekteren uit dict_capitals
     land, hoofdstad = random.choice(list(dict_capitals.items()))
+
+    # De vraag stellen
     print('\nWat is de hoofdstad van {}?'.format(land))
 
     i = 1
     while i <= aantal_pogingen:
-
         # Een gok inlezen
         guess = None
         while not guess:
             guess = input('\nPoging {}: '.format(i))
             if not guess:
                 print("Gelieve iets in te voeren...")
-
         # Controleren of het antwoord juist is
         if guess == hoofdstad:
             print("Congratulations! You've guessed it.")
