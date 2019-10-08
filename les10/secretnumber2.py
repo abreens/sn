@@ -1,4 +1,5 @@
 #####
+#
 # Les 10 - Storing data into a file
 #
 # Every good game needs to store the best score, so that you can try to best it.
