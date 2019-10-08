@@ -14,7 +14,7 @@ import datetime
 
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 30
-def leesgeheel():
+def lees_geheel():
     while True:
         invoer = input("\nGuess the secret number (between 1 and 30): ")
         try:
@@ -32,7 +32,7 @@ def leesgeheel():
 
 
 # FUNKTIE - Inlezen van de naam van de speler
-def leesnaam():
+def lees_naam():
     while True:
         name = input("Wat is Uw naam? ")
         # Empty strings return False!
@@ -51,7 +51,7 @@ attempts = 0
 dts = str(datetime.datetime.now())  # dts = Date Time Stamp
 
 # 2. Naam van de speler inlezen
-naam = leesnaam()
+naam = lees_naam()
 
 # 3. Welcome
 print("Welkom bij het 'Guess the Secret Number' spel, " + naam + "!\n")
@@ -60,13 +60,17 @@ print("Welkom bij het 'Guess the Secret Number' spel, " + naam + "!\n")
 print("De huidige top scores zijn:")
 with open("score_list.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
-    for score_dict in score_list:
-        print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("date") + ", speler: "
-              + score_dict.get("speler") + ", secret: " + str(score_dict["secret"]))
+    # Empty lists return False
+    if not score_list:
+        print('Er zijn nog geen Top scores beschikbaar!')
+    else:
+        for score_dict in score_list:
+            print(str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("date") + ", speler: "
+                  + score_dict.get("speler") + ", secret: " + str(score_dict["secret"]))
 
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
-    guess = leesgeheel()
+    guess = lees_geheel()
     attempts += 1
 
     # Het antwoord analyseren
