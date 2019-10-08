@@ -1,4 +1,5 @@
 #####
+#
 # Les 11 - Add some more data in the dictionary
 #
 # Every good game needs to store the best score, so that you can try to best it.
