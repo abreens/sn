@@ -38,8 +38,10 @@ print("Welkom bij het 'Guess the Secret Number' spel")
 
 # 3. De huidige top score uitlezen en afdrukken
 with open("score.txt", "r") as score_file:
-    best_score = int(score_file.read())
-    print("Huidige Top Score (attempts): " + str(best_score))
+    # best_score = int(score_file.read())
+    best_score = score_file.read()
+    print("Huidige Top Score (attempts): " + best_score)
+    best_score = int(best_score) if best_score.isdigit() else None
 
 # 4. Een geheim getal tussen 1 en 30 raden
 while True:
@@ -51,7 +53,7 @@ while True:
         print("Attempts needed: " + str(attempts))
 
         # Aantal pogingen wegschrijven wanneer de topscore werd verbroken
-        if attempts < best_score:
+        if best_score is None or attempts < best_score:
             print("PROFICIAT! U HEBT DE TOP SCORE VERBETERD!")
             with open("score.txt", "w") as score_file:
                 score_file.write(str(attempts))
