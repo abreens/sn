@@ -13,7 +13,7 @@ import datetime
 
 
 # FUNKTIE - Inlezen van een geheel getal tussen 1 en 30
-def leesgeheel():
+def lees_geheel():
     while True:
         invoer = input("\nGuess the secret number (between 1 and 30): ")
         try:
@@ -31,7 +31,7 @@ def leesgeheel():
 
 
 # FUNKTIE - Inlezen van de naam van de speler
-def leesnaam():
+def lees_naam():
     while True:
         name = input("Wat is Uw naam? ")
         # Empty strings return False!
@@ -54,7 +54,7 @@ wrong_guesses = []
 print("Dit is het 'Guess the Secret Number' spel!\n")
 
 # 3. Naam van de speler inlezen
-naam = leesnaam()
+naam = lees_naam()
 print("Welkom, " + naam + "!\n")
 
 # 4. De huidige top scores uitlezen en afdrukken
@@ -81,7 +81,7 @@ with open("score_list.txt", "r") as score_file:
 
 # 5. Een geheim getal tussen 1 en 30 raden
 while True:
-    guess = leesgeheel()
+    guess = lees_geheel()
     attempts += 1
 
     # Het antwoord analyseren
