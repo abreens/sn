@@ -33,7 +33,6 @@ def lees_letter(msg_for_user, mogelijkheden):
 
 # FUNKTIE - Het spel spelen
 def speel_quiz(dict_capitals, aantal_pogingen):
-
     print('\nU hebt {} poging(en). Success!'.format(aantal_pogingen))
 
     # Een willekeurig land en hoofdstad selekteren uit dict_capitals
