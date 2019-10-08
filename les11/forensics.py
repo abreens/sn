@@ -71,7 +71,7 @@ for i in verdachten:
         meeste = match
         dader = i["name"]
 
-# Het resultaat van de anylyse afdrukken
+# Het resultaat van de analyse afdrukken
 print("\n" + dader.upper() + " is de dader met " + str(meeste) + " matches in de DNA file!")
 
 # 6. Afscheid
