@@ -130,28 +130,33 @@ def play_game(name, lvl):
         wrong_guesses.append(guess)
 
 
-# 1. Welcome
-print("\nDit is het 'Guess the Secret Number' spel!\n")
+def main():
+    # 1. Welcome
+    print("\nDit is het 'Guess the Secret Number' spel!\n")
 
-# 2. Naam van de speler inlezen
-naam = lees_naam()
-print("Welkom, " + naam + "!\n")
+    # 2. Naam van de speler inlezen
+    naam = lees_naam()
+    print("Welkom, " + naam + "!\n")
 
-# 3. Main loop
-while True:
-    boodschap = "Would you like to A) play a new game, B) see the best scores, or C) quit? "
-    selection = lees_letter(boodschap, ["A", "B", "C"])
-    if selection == "A":
-        boodschap = "Wil U het (E)asy of (H)ard level? "
-        level = lees_letter(boodschap, ["E", "H"])
-        if level == "E":
-            play_game(naam, "easy")
+    # 3. Main loop
+    while True:
+        boodschap = "Would you like to A) play a new game, B) see the best scores, or C) quit? "
+        selection = lees_letter(boodschap, ["A", "B", "C"])
+        if selection == "A":
+            boodschap = "Wil U het (E)asy of (H)ard level? "
+            level = lees_letter(boodschap, ["E", "H"])
+            if level == "E":
+                play_game(naam, "easy")
+            else:
+                play_game(naam, "hard")
+        elif selection == "B":
+            get_top_scores()
         else:
-            play_game(naam, "hard")
-    elif selection == "B":
-        get_top_scores()
-    else:
-        break
+            break
 
-# 4. Afscheid
-print("\nBedankt voor het spelen. Hope to see you soon...")
+    # 4. Afscheid
+    print("\nBedankt voor het spelen. Hope to see you soon...")
+
+
+if __name__ == "__main__":
+    main()
