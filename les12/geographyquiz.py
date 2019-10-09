@@ -64,36 +64,41 @@ def speel_quiz(dict_capitals, aantal_pogingen):
         i += 1
 
 
-# 1. Welcome
-print("\nWelkom bij onze Geography Quiz")
+def main():
+    # 1. Welcome
+    print("\nWelkom bij onze Geography Quiz")
 
-# 2. Hoofdsteden initialiseren in een dictionary
-countries_cities = {"Oostenrijk": "Wenen", "Belgie": "Brussel", "Frankrijk": "Parijs", "Spanje": "Madrid",
-                    "Duitsland": "Berlijn", "Portugal": "Lissabon", "Engeland": "Londen", "Zweden": "Stockholm",
-                    "Denemarken": "Copenhagen", "Finland": "Helsinki", "Zwitserland": "Bern", "Turkije": "Ankara",
-                    "San Marino": "San Marino", "Ierland": "Dublin", "Griekenland": "Athene", "Kosovo": "Pristina",
-                    "Rusland": "Moskou"}
+    # 2. Hoofdsteden initialiseren in een dictionary
+    countries_cities = {"Oostenrijk": "Wenen", "Belgie": "Brussel", "Frankrijk": "Parijs", "Spanje": "Madrid",
+                        "Duitsland": "Berlijn", "Portugal": "Lissabon", "Engeland": "Londen", "Zweden": "Stockholm",
+                        "Denemarken": "Copenhagen", "Finland": "Helsinki", "Zwitserland": "Bern", "Turkije": "Ankara",
+                        "San Marino": "San Marino", "Ierland": "Dublin", "Griekenland": "Athene", "Kosovo": "Pristina",
+                        "Rusland": "Moskou"}
 
-# 3. Main loop
-while True:
-    boodschap = '\nWil U het (E)asy, (M)edium of (Hard) level? '
-    level = lees_letter(boodschap, ['E', 'M', 'H'])
-    if level == 'E':
-        # Easy - Speel het spel met 5 pogingen
-        speel_quiz(countries_cities, 5)
-    elif level == 'M':
-        # Medium - Speel het spel met 3 pogingen
-        speel_quiz(countries_cities, 3)
-    else:
-        # Hard - Speel het spel met 1 poging
-        speel_quiz(countries_cities, 1)
+    # 3. Game loop
+    while True:
+        boodschap = '\nWil U het (E)asy, (M)edium of (Hard) level? '
+        level = lees_letter(boodschap, ['E', 'M', 'H'])
+        if level == 'E':
+            # Easy - Speel het spel met 5 pogingen
+            speel_quiz(countries_cities, 5)
+        elif level == 'M':
+            # Medium - Speel het spel met 3 pogingen
+            speel_quiz(countries_cities, 3)
+        else:
+            # Hard - Speel het spel met 1 poging
+            speel_quiz(countries_cities, 1)
 
-    # Vragen of de gebruiker nog een spel wil spelen
-    boodschap = 'Wil U nog eens spelen (J/N)? '
-    nog_eens = lees_letter(boodschap, ['J', 'N'])
-    if nog_eens == "N":
-        # De main loop breken
-        break
+        # Vragen of de gebruiker nog een spel wil spelen
+        boodschap = 'Wil U nog eens spelen (J/N)? '
+        nog_eens = lees_letter(boodschap, ['J', 'N'])
+        if nog_eens == "N":
+            # De main loop breken
+            break
 
-# 4. Afscheid
-print("\nBedankt voor het spelen. Hope to see you soon...")
+    # 4. Afscheid
+    print("\nBedankt voor het spelen. Hope to see you soon...")
+
+
+if __name__ == "__main__":
+    main()
