@@ -25,14 +25,7 @@ def main():
     # 1. Welcome
     f.say_hello("Welkom bij het Spelers Management programma")
 
-    # 2. De huidige spelers lijst afdrukken
-    spelers = f.lees_dict("spelers.txt")
-    if not spelers:
-        print("\nEr zijn nog geen spelers opgeladen!")
-    else:
-        print(spelers)
-
-    # 3. Hoofd loop
+    # 2. Hoofd loop
     while True:
         boodschap = '\nWil U A) een speler toevoegen, B) de geregistreerde spelers bekijken of C) stoppen? '
         selection = f.lees_letter(boodschap, ["A", "B", "C"])
