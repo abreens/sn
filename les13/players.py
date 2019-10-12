@@ -47,29 +47,31 @@ class FootballPlayer(Player):
 def main():
 
     # 1. Welcome
-    f.say_hello("\nWelkom bij het Spelers Management programma")
+    f.say_hello("Welkom bij het Spelers Management programma")
 
-    # 2. Hoofd loop
+    # 2. De huidige spelers lijst afdrukken
+    spelers = f.lees_dict("spelers.txt")
+    # Empty lists return False
+    if not spelers:
+        print("\nEr zijn nog geen spelers opgeladen!")
+    else:
+        print(spelers)
+
+    # 3. Hoofd loop
     while True:
         boodschap = '\nWil U A) een speler toevoegen, B) de geregistreerde spelers bekijken of C) stoppen? '
         selection = f.lees_letter(boodschap, ["A", "B", "C"])
         if selection == "A":
             boodschap = "\nWil U een (B)asketbal speler of een (V)oetbal speler toevoegen? "
             keuze = f.lees_letter(boodschap, ["B", "V"])
-            if keuze == "B":
-                voornaam = f.lees_strg("\nWat is Uw voornaam? ")
-                print("U wil een BASKETBAL speler met naam {} toevoegen".format(voornaam))
-                gele_kaarten = f.lees_geheel(0, 300)
-                print("{} had {} gele kaarten in zijn carriere".format(voornaam, gele_kaarten))
-            else:
-                print("U wil een VOETBAL speler toevoegen")
+            f.lees_speler(keuze)
         elif selection == "B":
-            f.say_hello("U koos voor B UNDER CONSTRUCTION")
+            print("U koos voor B UNDER CONSTRUCTION")
         else:
             break
 
     # 3. Afscheid
-    f.say_hello("\nBedankt voor het gebruik van onze service. Hope to see you soon...\n")
+    print("\nBedankt voor het gebruik van onze service. Hope to see you soon...\n")
 
     kev_dur = BasketballPlayer(first_name="Kevin", last_name="Durant", height_cm=210, weight_kg=108, points=27.2,
                                rebounds=7.1, assists=4)
