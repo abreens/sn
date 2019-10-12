@@ -7,9 +7,41 @@
 #
 #####
 
-# Imports
+# Benodigde modules importeren
 import json
 import os
+
+
+# Model definitions voor SPELERS
+class Player:
+    def __init__(self, first_name, last_name, sport, height_cm, weight_kg):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.sport = sport
+        self.height_cm = height_cm
+        self.weight_kg = weight_kg
+
+    def weight_to_lbs(self):
+        pounds = self.weight_kg * 2.20462262
+        return pounds
+
+
+class BasketballPlayer(Player):
+    def __init__(self, first_name, last_name, sport, height_cm, weight_kg, points, rebounds, assists):
+        super().__init__(first_name=first_name, last_name=last_name, sport=sport,
+                         height_cm=height_cm, weight_kg=weight_kg)
+        self.points = points
+        self.rebounds = rebounds
+        self.assists = assists
+
+
+class FootballPlayer(Player):
+    def __init__(self, first_name, last_name, sport, height_cm, weight_kg, goals, yellow_cards, red_cards):
+        super().__init__(first_name=first_name, last_name=last_name, sport=sport,
+                         height_cm=height_cm, weight_kg=weight_kg)
+        self.goals = goals
+        self.yellow_cards = yellow_cards
+        self.red_cards = red_cards
 
 
 # FUNKTIE - Print een algemene boodschap voor de gebruiker.
@@ -60,7 +92,24 @@ def lees_geheel(msg_for_user, lower_limit, upper_limit):
                 break
             else:
                 print("Het getal moet tussen " + str(lower_limit) + " en " + str(upper_limit) + " liggen. Probeer aub "
-                                                                                                "opnieuw...")
+                                                                                                "opnieuw...\n")
+    return getal
+
+
+# FUNKTIE - Lees een positief decimaal getal
+def lees_float(msg_for_user):
+    while True:
+        invoer = input(msg_for_user + "(gebruik een . om het decimaal getal in te voeren!): ")
+        try:
+            getal = float(invoer)
+        except ValueError:
+            print("Dat was geen correcte invoer. Probeer aub opnieuw...")
+        else:
+            if getal > 0:
+                # De lus breken
+                break
+            else:
+                print("Gelieve een positief getal (verschillend van 0) in te geven aub...")
     return getal
 
 
@@ -88,11 +137,22 @@ def lees_speler(choice):
     # Specifieke velden inlezen
     if choice == "B":
         # BASKETBAL speler specifics
-        points = lees_geheel("Aantal gescoorde punten ", 0, 100)
-        rebounds = lees_geheel("Aantal rebounds ", 0, 100)
-        assists = lees_geheel("Aantal assists ", 0, 100)
+        b_points = lees_float("Aantal gescoorde punten ")
+        b_rebounds = lees_float("Aantal rebounds ")
+        b_assists = lees_geheel("Aantal assists ", 0, 100)
+
+        # BASKETBALLER samenstellen
+        player = BasketballPlayer(first_name=f_name, last_name=l_name, sport="Basketbal", height_cm=lengte,
+                                  weight_kg=gewicht, points=b_points, rebounds=b_rebounds, assists=b_assists)
+
     else:
         # VOETBAL speler specifics
         doelpunten = lees_geheel("Aantal doelpunten ", 0, 100)
         yellows = lees_geheel("Aantal gele kaarten ", 0, 100)
         reds = lees_geheel("Aantal rode kaarten ", 0, 100)
+
+        # VOETBALLER samenstellen
+        player = FootballPlayer(first_name=f_name, last_name=l_name, sport="Voetbal", height_cm=lengte,
+                                weight_kg=gewicht, goals=doelpunten, yellow_cards=yellows, red_cards=reds)
+
+    return player
