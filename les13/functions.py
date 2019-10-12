@@ -118,12 +118,12 @@ def lees_dict(file_name):
     # Check if file exists
     if os.path.isfile(file_name):
         print("Bestand bestaat!")
-        with open("spelers.txt", "r") as tabel:
+        with open(file_name, "r") as tabel:
             print('Lijst wordt ingelezen')
             tabel_list = json.loads(tabel.read())
+            return tabel_list
     else:
-        print("ERROR: File does not exist")
-    return tabel_list
+        print("\nERROR: File does not exist")
 
 
 # FUNKTIE  - Een speler inlezen

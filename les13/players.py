@@ -26,20 +26,11 @@ def main():
     f.say_hello("Welkom bij het Spelers Management programma")
 
     # 2. De huidige spelers lijst afdrukken
-    if os.path.isfile("spelers.txt"):  # Check if file exists
-        print("Het bestand bestaat")
-        with open("spelers.txt", "r") as spelers:
-            print("Inlezen van de lijst")
-            tabel_list = json.loads(spelers.read())
-        # Empty lists return False
-        if not tabel_list:
-            print("\nEr zijn nog geen spelers opgeladen!")
-        else:
-            print(tabel_list)
+    spelers = f.lees_dict("spelers.txt")
+    if not spelers:
+        print("\nEr zijn nog geen spelers opgeladen!")
     else:
-        print("ERROR: File does not exist")
-
-    # spelers = f.lees_dict("spelers.txt")
+        print(spelers)
 
     # 3. Hoofd loop
     while True:
