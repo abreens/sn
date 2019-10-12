@@ -14,23 +14,32 @@
 
 # Gezamelijke funkties importeren
 import functions as f
+import json
+import os
 
 # Classes importeren
 from les13.functions import BasketballPlayer, FootballPlayer
 
 
 def main():
-
     # 1. Welcome
     f.say_hello("Welkom bij het Spelers Management programma")
 
     # 2. De huidige spelers lijst afdrukken
-    spelers = f.lees_dict("spelers.txt")
-    # Empty lists return False
-    if not spelers:
-        print("\nEr zijn nog geen spelers opgeladen!")
+    if os.path.isfile("spelers.txt"):  # Check if file exists
+        print("Het bestand bestaat")
+        with open("spelers.txt", "r") as spelers:
+            print("Inlezen van de lijst")
+            tabel_list = json.loads(spelers.read())
+        # Empty lists return False
+        if not tabel_list:
+            print("\nEr zijn nog geen spelers opgeladen!")
+        else:
+            print(tabel_list)
     else:
-        print(spelers)
+        print("ERROR: File does not exist")
+
+    # spelers = f.lees_dict("spelers.txt")
 
     # 3. Hoofd loop
     while True:
@@ -71,6 +80,7 @@ def main():
     print()
 
     print(messi.__dict__)
+
 
 if __name__ == "__main__":
     main()

@@ -117,11 +117,13 @@ def lees_float(msg_for_user):
 def lees_dict(file_name):
     # Check if file exists
     if os.path.isfile(file_name):
-        with open(file_name, "r") as tabel:
-            tabel_dict = json.loads(tabel.read())
+        print("Bestand bestaat!")
+        with open("spelers.txt", "r") as tabel:
+            print('Lijst wordt ingelezen')
+            tabel_list = json.loads(tabel.read())
     else:
         print("ERROR: File does not exist")
-    return tabel_dict
+    return tabel_list
 
 
 # FUNKTIE  - Een speler inlezen
