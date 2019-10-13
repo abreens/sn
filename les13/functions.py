@@ -124,10 +124,10 @@ def lees_db(file_name):
             list_dicts = json.loads(db_tabel.read())
         # Empty lists return False
         if not list_dicts:
-            print("Er is nog geen data opgeladen!")
+            print("\nEr is nog geen data opgeladen!")
+        return list_dicts
     else:
         print("\nERROR: File does not exist!")
-    return list_dicts
 
 
 # FUNKTIE - Lijst van bestaande spelers ophalen en afdrukken
@@ -135,9 +135,20 @@ def druk_spelers():
     spelers = lees_db("spelers.txt")
     # Spelers worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
     if spelers and spelers is not None:
-        print("De volgende spelers zijn geregistreerd:")
+        print("\nDe volgende spelers zijn geregistreerd:")
         for player_dict in spelers:
             print(player_dict)
+
+
+# FUNKTIE - De huidige topscores afdrukken
+def druk_topscores():
+    scores = lees_db("results.txt")
+    # Scores worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
+    if scores and scores is not None:
+        print("\nDe volgende scores zijn geregistreerd:")
+        for score_dict in scores:
+            print("Op {} had speler {} {} pogingen nodig om het geheime nummer te raden"
+                  .format(score_dict.get("date"), score_dict.get("player_name"), score_dict.get("score")))
 
 
 # FUNKTIE - Nieuwe speler opslaan

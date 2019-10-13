@@ -44,7 +44,6 @@ def main():
 
         elif selection == "B":
             # Bestaande spelers afdrukken
-            print("\nDe geregistreerde spelers worden opgehaald...\n")
             f.druk_spelers()
 
         else:
