@@ -14,8 +14,6 @@
 
 # Gezamelijke funkties importeren
 import functions as f
-import json
-import os
 
 # Classes importeren
 from les13.functions import BasketballPlayer, FootballPlayer
@@ -29,21 +27,33 @@ def main():
     while True:
         boodschap = '\nWil U A) een speler toevoegen, B) de geregistreerde spelers bekijken of C) stoppen? '
         selection = f.lees_letter(boodschap, ["A", "B", "C"])
+
         if selection == "A":
+            # Een speler toevoegen
             boodschap = "\nWil U een (B)asketbal speler of een (V)oetbal speler toevoegen? "
             keuze = f.lees_letter(boodschap, ["B", "V"])
-            nieuwe_speler = f.lees_speler(keuze)
+            nieuwe_speler = f.create_speler(keuze)
 
             print("\nU hebt de volgende speler gedefinieerd: ")
             print(nieuwe_speler.__dict__)
+            print()
+            print(nieuwe_speler.last_name)
+            print(nieuwe_speler.first_name)
 
         elif selection == "B":
-            print("U koos voor B UNDER CONSTRUCTION")
+            # Bestaande spelers afdrukken
+            print("\nDe geregistreerde spelers worden opgehaald...\n")
+            f.lees_spelers()
+
         else:
+            # Stoppen
             break
 
     # 3. Afscheid
     print("\nBedankt voor het gebruik van onze service. Hope to see you soon...\n")
+
+
+    ### PLAYGROUND TO BE DELETED WHEN DONE
 
     kev_dur = BasketballPlayer(first_name="Kevin", last_name="Durant", sport="Basketbal", height_cm=210,
                                weight_kg=108, points=27.2, rebounds=7.1, assists=4)
@@ -64,6 +74,8 @@ def main():
     print()
 
     print(messi.__dict__)
+
+    ### END OF PLAYGROUND
 
 
 if __name__ == "__main__":

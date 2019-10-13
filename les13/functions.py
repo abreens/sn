@@ -113,21 +113,32 @@ def lees_float(msg_for_user):
     return getal
 
 
-# FUNKTIE - Een dict inlezen vanuit file_name
-def lees_dict(file_name):
+# FUNKTIE - Een lijst van dictionaries inlezen vanuit file_name
+def lees_db(file_name):
     # Check if file exists
     if os.path.isfile(file_name):
-        print("Bestand bestaat!")
-        with open(file_name, "r") as tabel:
-            print('Lijst wordt ingelezen')
-            tabel_list = json.loads(tabel.read())
-            return tabel_list
+        # Bestand bestaat
+        with open(file_name, "r") as db_tabel:
+            # Records inlezen
+            list_dicts = json.loads(db_tabel.read())
+            if not list_dicts:
+                print("Er zijn nog geen spelers opgeladen!")
+            return list_dicts
     else:
-        print("\nERROR: File does not exist")
+        print("\nERROR: File does not exist!")
 
 
-# FUNKTIE  - Een speler inlezen
-def lees_speler(choice):
+# FUNKTIE - Lijst van bestaande spelers ophalen en afdrukken
+def lees_spelers():
+    spelers = lees_db("spelers.txt")
+    # Spelers worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
+    if spelers and spelers is not None:
+        print("De volgende spelers zijn geregistreerd:")
+        print(spelers)
+
+
+# FUNKTIE  - Een nieuwe speler invoeren
+def create_speler(choice):
     print("\nDe gegevens van de nieuwe speler inlezen")
 
     # Gemeenschappelijke velden inlezen
