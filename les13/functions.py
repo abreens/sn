@@ -146,7 +146,9 @@ def druk_topscores():
     # Scores worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
     if scores and scores is not None:
         print("\nDe volgende scores zijn geregistreerd:")
-        for score_dict in scores:
+        # De scores eerst sorteren
+        new_scores = sorted(scores, key=lambda k: k['score'])
+        for score_dict in new_scores:
             print("Op {} had speler {} {} pogingen nodig om het geheime nummer te raden"
                   .format(score_dict.get("date"), score_dict.get("player_name"), score_dict.get("score")))
 
