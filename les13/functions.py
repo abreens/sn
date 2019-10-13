@@ -2,10 +2,11 @@
 #
 # Les 13 - OOP
 #
-# Module die alle funkties bevat voor de oefeningen van Les 13. Aangezien er geen code staan in the Global Scope
-# van deze module zullen we ook geen "if __name__ == "__main__":" statement toevoegen
+# Module die alle funkties bevat voor de oefeningen van Les 13. Aangezien er geen code staat in the Global Scope
+# van deze module werd er ook geen "if __name__ == "__main__":" statement toevoegen
 #
 #####
+
 
 # Benodigde modules importeren
 import json
@@ -91,7 +92,7 @@ def lees_geheel(msg_for_user, lower_limit, upper_limit):
                 # De lus breken
                 break
             else:
-                print("Het getal moet tussen " + str(lower_limit) + " en " + str(upper_limit) + " liggen. Probeer aub "
+                print("Het getal moet tussen " + str(lower_limit) + " en " + str(upper_limit) + " liggen. Probeer aub "                                                                                    
                                                                                                 "opnieuw...\n")
     return getal
 
@@ -99,17 +100,17 @@ def lees_geheel(msg_for_user, lower_limit, upper_limit):
 # FUNKTIE - Lees een positief decimaal getal
 def lees_float(msg_for_user):
     while True:
-        invoer = input(msg_for_user + "(gebruik een . om het decimaal getal in te voeren!): ")
+        invoer = input(msg_for_user + "(gebruik een . om een decimaal getal in te voeren!): ")
         try:
             getal = float(invoer)
         except ValueError:
-            print("Dat was geen correcte invoer. Probeer aub opnieuw...")
+            print("Dat was geen correcte invoer. Probeer aub opnieuw...\n")
         else:
             if getal > 0:
                 # De lus breken
                 break
             else:
-                print("Gelieve een positief getal (verschillend van 0) in te geven aub...")
+                print("Gelieve een positief getal (verschillend van 0) in te geven aub...\n")
     return getal
 
 
@@ -121,20 +122,33 @@ def lees_db(file_name):
         with open(file_name, "r") as db_tabel:
             # Records inlezen
             list_dicts = json.loads(db_tabel.read())
-            if not list_dicts:
-                print("Er zijn nog geen spelers opgeladen!")
-            return list_dicts
+        # Empty lists return False
+        if not list_dicts:
+            print("Er is nog geen data opgeladen!")
     else:
         print("\nERROR: File does not exist!")
+    return list_dicts
 
 
 # FUNKTIE - Lijst van bestaande spelers ophalen en afdrukken
-def lees_spelers():
+def druk_spelers():
     spelers = lees_db("spelers.txt")
     # Spelers worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
     if spelers and spelers is not None:
         print("De volgende spelers zijn geregistreerd:")
-        print(spelers)
+        for player_dict in spelers:
+            print(player_dict)
+
+
+# FUNKTIE - Nieuwe speler opslaan
+def schrijf_speler(new_player):
+    print(" Speler wordt opgeslagen...")
+    # Huidige spelers ophalen
+    spelers = lees_db("spelers.txt")
+    # Nieuwe Speler aan de lijst toevoegen en wegschrijven
+    spelers.append(new_player)
+    with open("spelers.txt", "w") as player_file:
+        player_file.write(json.dumps(spelers))
 
 
 # FUNKTIE  - Een nieuwe speler invoeren
@@ -149,22 +163,22 @@ def create_speler(choice):
 
     # Specifieke velden inlezen
     if choice == "B":
-        # BASKETBAL speler specifics
+        # Basketbal speler specifieke velden inlezen
         b_points = lees_float("Aantal gescoorde punten ")
         b_rebounds = lees_float("Aantal rebounds ")
         b_assists = lees_geheel("Aantal assists ", 0, 100)
 
-        # BASKETBALLER samenstellen
+        # Basketbal speler samenstellen
         player = BasketballPlayer(first_name=f_name, last_name=l_name, sport="Basketbal", height_cm=lengte,
                                   weight_kg=gewicht, points=b_points, rebounds=b_rebounds, assists=b_assists)
 
     else:
-        # VOETBAL speler specifics
+        # Voetbal speler specifieke velden inlezen
         doelpunten = lees_geheel("Aantal doelpunten ", 0, 100)
         yellows = lees_geheel("Aantal gele kaarten ", 0, 100)
         reds = lees_geheel("Aantal rode kaarten ", 0, 100)
 
-        # VOETBALLER samenstellen
+        # Voetbal speler samenstellen
         player = FootballPlayer(first_name=f_name, last_name=l_name, sport="Voetbal", height_cm=lengte,
                                 weight_kg=gewicht, goals=doelpunten, yellow_cards=yellows, red_cards=reds)
 
