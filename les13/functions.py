@@ -11,6 +11,8 @@
 # Benodigde modules importeren
 import json
 import os
+import random
+import datetime
 
 
 # Model definitions voor SPELERS
@@ -202,3 +204,52 @@ def create_speler(choice):
                                 weight_kg=gewicht, goals=doelpunten, yellow_cards=yellows, red_cards=reds)
 
     return player
+
+
+# FUNKTIE - Speel het Guess the Secret Number spel
+def play_game(name, lvl):
+
+    # Initialisaties
+    secret = random.randint(1, 30)
+    attempts = 0
+    dts = str(datetime.datetime.now())  # dts = Date Time Stamp
+    wrong_guesses = []
+
+    # De score file openen en inlezen
+    with open("score_list.txt", "r") as score_file:
+        score_list = json.loads(score_file.read())
+
+    # Boodschap voor de gebruiker
+    print("\nHET SPEL START NU!")
+
+    # Main game loop
+    while True:
+        guess = lees_geheel("Doe een gok: ", 1, 30)
+        attempts += 1
+
+        # Het antwoord analyseren
+        if guess == secret:
+            print("\nYou've guessed it - congratulations! It's number " + str(secret))
+            print("Attempts needed: " + str(attempts))
+            print("Dit waren Uw verkeerde keuzes: ", wrong_guesses)
+            print()
+
+            # De score_list.txt file updaten en wegschrijven
+            score_list.append({"attempts": attempts, "date": dts, "speler": name, "secret": secret,
+                               "wrong_guesses": wrong_guesses})
+            with open("score_list.txt", "w") as score_file:
+                score_file.write(json.dumps(score_list))
+            # De lus breken
+            break
+
+        else:
+            # Het getal werd niet geraden.
+            print("Sorry, Uw gok is niet correct...")
+            if lvl == "easy":
+                # Een tip voor de gebruiker meegeven als mode 'Easy' is
+                if guess > secret:
+                    print("Tip: try something smaller")
+                else:
+                    print("Tip: try something bigger")
+        # De huidige guess dynamisch opslaan in lijst wrong_guesses
+        wrong_guesses.append(guess)
