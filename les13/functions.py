@@ -127,7 +127,7 @@ def lees_db(file_name):
             print("\nEr is nog geen data opgeladen!")
         return list_dicts
     else:
-        print("\nERROR: File does not exist!")
+        print("\nERROR: File '" + file_name + "' does not exist!")
 
 
 # FUNKTIE - Lijst van bestaande spelers ophalen en afdrukken
@@ -153,15 +153,21 @@ def druk_topscores():
                   .format(score_dict.get("date"), score_dict.get("player_name"), score_dict.get("score")))
 
 
-# FUNKTIE - Nieuwe speler opslaan
-def schrijf_speler(new_player):
-    print(" Speler wordt opgeslagen...")
-    # Huidige spelers ophalen
-    spelers = lees_db("spelers.txt")
-    # Nieuwe Speler aan de lijst toevoegen en wegschrijven
-    spelers.append(new_player)
-    with open("spelers.txt", "w") as player_file:
-        player_file.write(json.dumps(spelers))
+# FUNKTIE - Schrijf my_dict weg in de lijst van dictionaries in file_name
+def schrijf_db(file_name, my_dict):
+    # Check if file exists
+    if os.path.isfile(file_name):
+        # Bestand bestaat
+        print("Data wordt opgeslagen...")
+        # Huidige records ophalen
+        records = lees_db(file_name)
+        # Nieuwe dictionary toevoegen aan bestaande records
+        records.append(my_dict)
+        # Records wegschrijven
+        with open(file_name, "w") as record_list:
+            record_list.write(json.dumps(records))
+    else:
+        print("\nERROR: File '" + file_name + "' does not exist!")
 
 
 # FUNKTIE  - Een nieuwe speler invoeren

@@ -38,7 +38,8 @@ def main():
             boodschap = "\nWil U deze speler opslaan? (J/N) "
             keuze = f.lees_letter(boodschap, ["J", "N"])
             if keuze == "J":
-                f.schrijf_speler(nieuwe_speler.__dict__)
+                # De speler opslaan in de database
+                f.schrijf_db("spelers.txt", nieuwe_speler.__dict__)
             else:
                 print("De gegevens van de speler worden niet opgeslagen!")
 
