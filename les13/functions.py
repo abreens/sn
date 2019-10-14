@@ -52,7 +52,7 @@ class Result:
     def __init__(self, score, player_name, dts):
         self.score = score
         self.player_name = player_name
-        self.dts = dts
+        self.dts = dts  # dts = Date Time Stamp
 
 
 # FUNKTIE - Print een algemene boodschap voor de gebruiker.
@@ -160,7 +160,7 @@ def druk_records(file_name):
                       .format(score_dict.get("dts"), score_dict.get("player_name"), score_dict.get("score")))
 
 
-# FUNKTIE - Schrijf my_dict weg in de lijst van dictionaries in file_name
+# FUNKTIE - Schrijf dictionary my_dict weg in de lijst van dictionaries in file_name
 def schrijf_db(file_name, my_dict):
     # Check if file exists
     if os.path.isfile(file_name):
@@ -179,6 +179,7 @@ def schrijf_db(file_name, my_dict):
 
 # FUNKTIE  - Een nieuwe speler invoeren
 def create_speler(choice):
+
     print("\nDe gegevens van de nieuwe speler inlezen")
 
     # Gemeenschappelijke velden inlezen
@@ -197,8 +198,9 @@ def create_speler(choice):
         # Basketbal speler samenstellen
         player = BasketballPlayer(first_name=f_name, last_name=l_name, sport="Basketbal", height_cm=lengte,
                                   weight_kg=gewicht, points=b_points, rebounds=b_rebounds, assists=b_assists)
+        return player
 
-    else:
+    elif choice == "V":
         # Voetbal speler specifieke velden inlezen
         doelpunten = lees_geheel("Aantal doelpunten ", 0, 100)
         yellows = lees_geheel("Aantal gele kaarten ", 0, 100)
@@ -207,8 +209,9 @@ def create_speler(choice):
         # Voetbal speler samenstellen
         player = FootballPlayer(first_name=f_name, last_name=l_name, sport="Voetbal", height_cm=lengte,
                                 weight_kg=gewicht, goals=doelpunten, yellow_cards=yellows, red_cards=reds)
-
-    return player
+        # Tweede return statement om een warning van PyCharm te vermijden
+        # Local variable 'player' might be referenced before assignment
+        return player
 
 
 # FUNKTIE - Speel het Guess the Secret Number spel
@@ -229,6 +232,7 @@ def play_game(name, lvl):
 
         # Het antwoord analyseren
         if guess == secret:
+            # Het getal werd geraden
             print("\nYou've guessed it - congratulations! It's number " + str(secret))
             print("Attempts needed: " + str(attempts))
             print("Dit waren Uw verkeerde keuzes: ", wrong_guesses)
