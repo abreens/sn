@@ -47,7 +47,7 @@ class FootballPlayer(Player):
         self.red_cards = red_cards
 
 
-# Model definition for RESULTS
+# Model definition for Guess the Secret Number RESULTS
 class Result:
     def __init__(self, score, player_name, dts):
         self.score = score
@@ -219,7 +219,7 @@ def play_game(name, lvl):
     # Initialisaties
     attempts = 0
     secret = random.randint(1, 30)
-    dts = str(datetime.datetime.now()) # dts = Date Time Stamp
+    dts = str(datetime.datetime.now())  # dts = Date Time Stamp
     wrong_guesses = []
 
     # Boodschap voor de gebruiker
@@ -240,7 +240,7 @@ def play_game(name, lvl):
             # Het resultaat als een object samenstellen (niet alle beschikbare velden worden opgenomen!)
             resultaat = Result(score=attempts, player_name=name, dts=dts)
 
-            # Het nieuwe resultaat toevoegen aan results.txt
+            # Het nieuwe resultaat als dictionary toevoegen aan results.txt
             schrijf_db("results.txt", resultaat.__dict__)
 
             # De lus breken
