@@ -147,11 +147,11 @@ def main():
             level = lees_letter(boodschap, ["E", "H"])
             if level == "E":
                 play_game(naam, "easy")
-            else:
+            elif level == "H":
                 play_game(naam, "hard")
         elif selection == "B":
             get_top_scores()
-        else:
+        elif selection == "C":
             break
 
     # 4. Afscheid
