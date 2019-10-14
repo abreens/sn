@@ -56,7 +56,7 @@ def speel_quiz(dict_capitals, aantal_pogingen):
             # De lus breken
             break
         else:
-            if aantal_pogingen - i == 0:
+            if aantal_pogingen - i <= 0:
                 print("U hebt het helaas niet kunnen raden :(")
                 print("De hoofdstad van {} is {}!\n".format(land, hoofdstad))
             else:
@@ -85,7 +85,7 @@ def main():
         elif level == 'M':
             # Medium - Speel het spel met 3 pogingen
             speel_quiz(countries_cities, 3)
-        else:
+        elif level == 'H':
             # Hard - Speel het spel met 1 poging
             speel_quiz(countries_cities, 1)
 
