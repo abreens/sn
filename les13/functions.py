@@ -47,6 +47,14 @@ class FootballPlayer(Player):
         self.red_cards = red_cards
 
 
+# Model definition for RESULTS
+class Result:
+    def __init__(self, score, player_name, dts):
+        self.score = score
+        self.player_name = player_name
+        self.dts = dts
+
+
 # FUNKTIE - Print een algemene boodschap voor de gebruiker.
 def say_hello(msg):
     print()
@@ -94,7 +102,7 @@ def lees_geheel(msg_for_user, lower_limit, upper_limit):
                 # De lus breken
                 break
             else:
-                print("Het getal moet tussen " + str(lower_limit) + " en " + str(upper_limit) + " liggen. Probeer aub "                                                                                    
+                print("Het getal moet tussen " + str(lower_limit) + " en " + str(upper_limit) + " liggen. Probeer aub "
                                                                                                 "opnieuw...\n")
     return getal
 
@@ -152,7 +160,7 @@ def druk_topscores():
         new_scores = sorted(scores, key=lambda k: k['score'])
         for score_dict in new_scores:
             print("Op {} had speler {} {} pogingen nodig om het geheime nummer te raden"
-                  .format(score_dict.get("date"), score_dict.get("player_name"), score_dict.get("score")))
+                  .format(score_dict.get("dts"), score_dict.get("player_name"), score_dict.get("score")))
 
 
 # FUNKTIE - Schrijf my_dict weg in de lijst van dictionaries in file_name
@@ -208,23 +216,18 @@ def create_speler(choice):
 
 # FUNKTIE - Speel het Guess the Secret Number spel
 def play_game(name, lvl):
-
     # Initialisaties
-    secret = random.randint(1, 30)
     attempts = 0
-    dts = str(datetime.datetime.now())  # dts = Date Time Stamp
+    secret = random.randint(1, 30)
+    dts = str(datetime.datetime.now()) # dts = Date Time Stamp
     wrong_guesses = []
-
-    # De score file openen en inlezen
-    with open("score_list.txt", "r") as score_file:
-        score_list = json.loads(score_file.read())
 
     # Boodschap voor de gebruiker
     print("\nHET SPEL START NU!")
 
     # Main game loop
     while True:
-        guess = lees_geheel("Doe een gok: ", 1, 30)
+        guess = lees_geheel("\nDoe een gok ", 1, 30)
         attempts += 1
 
         # Het antwoord analyseren
@@ -234,11 +237,12 @@ def play_game(name, lvl):
             print("Dit waren Uw verkeerde keuzes: ", wrong_guesses)
             print()
 
-            # De score_list.txt file updaten en wegschrijven
-            score_list.append({"attempts": attempts, "date": dts, "speler": name, "secret": secret,
-                               "wrong_guesses": wrong_guesses})
-            with open("score_list.txt", "w") as score_file:
-                score_file.write(json.dumps(score_list))
+            # Het resultaat als een object samenstellen (niet alle beschikbare velden worden opgenomen!)
+            resultaat = Result(score=attempts, player_name=name, dts=dts)
+
+            # Het nieuwe resultaat toevoegen aan results.txt
+            schrijf_db("results.txt", resultaat.__dict__)
+
             # De lus breken
             break
 
