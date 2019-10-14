@@ -40,14 +40,14 @@ def main():
             if keuze == "J":
                 # De speler opslaan in de database
                 f.schrijf_db("spelers.txt", nieuwe_speler.__dict__)
-            else:
+            elif keuze == "N":
                 print("De gegevens van de speler worden niet opgeslagen!")
 
         elif selection == "B":
             # Bestaande spelers afdrukken
-            f.druk_spelers()
+            f.druk_records("spelers.txt")
 
-        else:
+        elif selection == "C":
             # Stoppen
             break
 

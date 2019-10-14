@@ -72,7 +72,7 @@ def lees_letter(msg_for_user, mogelijkheden):
             # De lus breken
             break
         else:
-            print("Dat was geen correct invoer. Probeert U het aub opnieuw...")
+            print("Dat was geen correcte invoer. Probeert U het aub opnieuw...")
     return invoer
 
 
@@ -140,27 +140,24 @@ def lees_db(file_name):
         print("\nERROR: File '" + file_name + "' does not exist!")
 
 
-# FUNKTIE - Lijst van bestaande spelers ophalen en afdrukken
-def druk_spelers():
-    spelers = lees_db("spelers.txt")
-    # Spelers worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
-    if spelers and spelers is not None:
-        print("\nDe volgende spelers zijn geregistreerd:")
-        for player_dict in spelers:
-            print(player_dict)
-
-
-# FUNKTIE - De huidige topscores afdrukken
-def druk_topscores():
-    scores = lees_db("results.txt")
-    # Scores worden afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
-    if scores and scores is not None:
-        print("\nDe volgende scores zijn geregistreerd:")
-        # De scores eerst sorteren
-        new_scores = sorted(scores, key=lambda k: k['score'])
-        for score_dict in new_scores:
-            print("Op {} had speler {} {} pogingen nodig om het geheime nummer te raden"
-                  .format(score_dict.get("dts"), score_dict.get("player_name"), score_dict.get("score")))
+# FUNKTIE - Lijst van bestaande data in spelers.txt of results.txt ophalen en afdrukken
+def druk_records(file_name):
+    data_lijst = lees_db(file_name)
+    # Data wordt afgedrukt als de lijst niet leeg is en als de lijst niet de waarde None heeft
+    if data_lijst and data_lijst is not None:
+        if file_name == "spelers.txt":
+            # Spelers uit spelers.txt afdrukken
+            print("\nDe volgende spelers zijn geregistreerd:")
+            for player_dict in data_lijst:
+                print(player_dict)
+        elif file_name == "results.txt":
+            # Top Scores uit results.txt afdrukken
+            print("\nDe volgende scores zijn geregistreerd:")
+            # De scores eerst sorteren
+            new_scores = sorted(data_lijst, key=lambda k: k['score'])
+            for score_dict in new_scores:
+                print("Op {} had speler {} {} pogingen nodig om het geheime nummer te raden"
+                      .format(score_dict.get("dts"), score_dict.get("player_name"), score_dict.get("score")))
 
 
 # FUNKTIE - Schrijf my_dict weg in de lijst van dictionaries in file_name

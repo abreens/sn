@@ -34,11 +34,11 @@ def main():
             level = f.lees_letter(boodschap, ["E", "H"])
             if level == "E":
                 f.play_game(naam, "easy")
-            else:
+            elif level == "H":
                 f.play_game(naam, "hard")
         elif selection == "B":
-            f.druk_topscores()
-        else:
+            f.druk_records("results.txt")
+        elif selection == "C":
             break
 
     # 4. Afscheid
