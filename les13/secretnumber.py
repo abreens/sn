@@ -29,16 +29,22 @@ def main():
     while True:
         boodschap = "\nWould you like to A) play a new game, B) see the best scores, or C) quit? "
         selection = f.lees_letter(boodschap, ["A", "B", "C"])
+
         if selection == "A":
+            # Een spel spelen
             boodschap = "\nWil U het (E)asy of (H)ard level? "
             level = f.lees_letter(boodschap, ["E", "H"])
             if level == "E":
                 f.play_game(naam, "easy")
             elif level == "H":
                 f.play_game(naam, "hard")
+
         elif selection == "B":
+            # De huidige topscores afdrukken
             f.druk_records("results.txt")
+
         elif selection == "C":
+            # Stoppen
             break
 
     # 4. Afscheid

@@ -3,7 +3,7 @@
 # Les 13 - OOP
 #
 # Module die alle funkties bevat voor de oefeningen van Les 13. Aangezien er geen code staat in the Global Scope
-# van deze module werd er ook geen "if __name__ == "__main__":" statement toevoegen
+# van deze module werd er ook geen "if __name__ == "__main__":" statement toegevoegd
 #
 #####
 
@@ -256,5 +256,6 @@ def play_game(name, lvl):
                     print("Tip: try something smaller")
                 else:
                     print("Tip: try something bigger")
+
         # De huidige guess dynamisch opslaan in lijst wrong_guesses
         wrong_guesses.append(guess)
