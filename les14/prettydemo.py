@@ -1,4 +1,4 @@
-# Volgende entry moet toegevoegd worden aan omgevingsvariabele PATH!
+# De volgende entry moet toegevoegd worden aan omgevingsvariabele PATH!
 # C:\Users\axelb\AppData\Local\Programs\Python\Python37-32\Scripts
 
 from prettytable import PrettyTable
