@@ -107,7 +107,7 @@ def lees_geheel(msg_for_user, lower_limit, upper_limit):
     return getal
 
 
-# FUNKTIE - Lees een positief decimaal getal
+# FUNKTIE - Lees een positief reëel getal
 def lees_float(msg_for_user):
     while True:
         invoer = input(msg_for_user + "(gebruik een . om een decimaal getal in te voeren!): ")
