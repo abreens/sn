@@ -16,13 +16,19 @@ body, .bdabout, .bdport {
     background-size: cover;
 }
 
+/* Specific 'body' class for about_me.html */
+.bdabout { background: url("../../static/img/about.jpg") center center; background-size: cover; }
+
+/* Specific 'body' class for portfolio.html */
+.bdport { background: url("../../static/img/portfolio.jpg") center center; background-size: cover; }
+
 a { text-decoration: none; color: white; }
 
 a:hover { color: #1c80c1; }
 
 /*** BEGIN SITE STRUCTURE ***/
 
-.navigation, .indexwrapper, .rechthoek, .bol, .artwrapper {
+.navigation, .indexwrapper, .artwrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
