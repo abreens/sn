@@ -1,3 +1,21 @@
+###
+#
+# Les 15 - Flask Home Page
+#
+# Create a new Flask web app which will serve as your personal website. It should have the following pages:
+#    Index page (/), where you say hello to the visitors
+#    About me page (/about)
+#    Portfolio page (/portfolio): contains links to sub-pages with your front-end projects
+# The Portfolio page should have links to the HTML&CSS pages (projects) that you've created in the front-end
+# part of this course:
+#    Fakebook (/portfolio/fakebook)
+#    Boogle (/portfolio/boogle)
+#    Hair Salon (/portfolio/hair-salon)
+# Create a separate handler (and URL route) for each of these pages.
+#
+###
+
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
