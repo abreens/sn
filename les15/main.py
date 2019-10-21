@@ -18,7 +18,7 @@ def about_me():
 @app.route("/portfolio")
 def portfolio():
     # Connect handler to /portfolio/portfolio.html
-    return render_template("portfolio.html")
+    return render_template("/portfolio.html")
 
 
 if __name__ == '__main__':
