@@ -42,6 +42,7 @@ a:hover { color: #1c80c1; }
 
 .indexwrapper{
     height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
+    //border: 1px red solid;
 }
 
 .rechthoek{
