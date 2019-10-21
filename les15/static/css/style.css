@@ -33,6 +33,7 @@ a:hover { color: #1c80c1; }
     justify-content: flex-end; /* Rechts uitlijnen */
     height: 50px;
     background-color: black;
+    //background-color: red;
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
 }
 
