@@ -46,15 +46,3 @@ a:hover { color: #1c80c1; }
     //border: 1px red solid;
 }
 
-.rechthoek{
-    height: 800px;
-    width: 890px;
-    background-color: #4e555b;
-    opacity: 0.90;
-    font-family: 'Open Sans Condensed', sans-serif;
-    letter-spacing: 50px;
-    font-size: 40px;
-    line-height: 100px;
-    //padding-left: 45px;
-    text-align: center;
-}
