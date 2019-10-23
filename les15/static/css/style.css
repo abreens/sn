@@ -118,7 +118,8 @@ article {
     //display: block;
 	text-decoration: none;
 	text-align: center;
-	background-color: #c7b083;
+	//background-color: #c7b083;
+    background-color: #446fc1;
 	color: #fff;
 	margin-left: 25px;
 	padding: 10px;
@@ -127,5 +128,5 @@ article {
 }
 
 .knop:hover	{
-	background-color: #f6a403;
+	background-color: #0344f6;
 }
