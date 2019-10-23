@@ -28,7 +28,7 @@ a:hover { color: #1c80c1; }
 
 /*** BEGIN SITE STRUCTURE ***/
 
-.navigation, .indexwrapper, .artwrapper, .abrclogo {
+.navigation, .indexwrapper, .artwrapper, .abrclogo, .buttonbanner {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -93,4 +93,39 @@ section h3 { margin-bottom: 15px; }
     float: left;
     background-color: black;
     padding: 25px 0 25px 0;
+}
+
+/*** SPECIFIC STYLING FOR PORTFOLLIO.HTML ***/
+
+article {
+    width: 100%;
+    height: auto;
+    //float: left;
+    //background-color: black;
+    //padding: 25px 0 25px 0;
+    //border: 1px solid red;
+}
+
+.buttonbanner{
+    justify-content: left;
+    width: 100%;
+    background-color: black;
+    height: 100px;
+}
+
+.knop {
+	width: 150px;
+    //display: block;
+	text-decoration: none;
+	text-align: center;
+	background-color: #c7b083;
+	color: #fff;
+	margin-left: 25px;
+	padding: 10px;
+	font-size: 14px;
+    border-radius: 50px;
+}
+
+.knop:hover	{
+	background-color: #f6a403;
 }
