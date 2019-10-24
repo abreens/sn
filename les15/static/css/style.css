@@ -82,6 +82,8 @@ section img {
 
 article { margin-bottom: 50px; }
 
+article h2 { margin-bottom: 10px; }
+
 .buttonbanner{
     justify-content: left;
     height: 110px;
@@ -96,6 +98,4 @@ article { margin-bottom: 50px; }
     border-radius: 50px;
 }
 
-.knop:hover	{
-	background-color: #0344f6;
-}
+.knop:hover	{ background-color: #0344f6; }
