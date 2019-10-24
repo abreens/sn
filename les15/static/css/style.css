@@ -87,10 +87,8 @@ section img {
 
 .knop {
 	width: 175px;
-    height: 45px;
-	text-decoration: none;
-	text-align: center;
-    background-color: #446fc1;
+    height: 40px;
+    background-color: #1c80c1;
 	margin-left: 25px;
 	font-size: 14px;
     border-radius: 50px;
