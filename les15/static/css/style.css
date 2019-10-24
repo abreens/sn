@@ -17,10 +17,10 @@ body, .bdabout, .bdport {
 }
 
 /* Specific 'body' class for about_me.html */
-.bdabout { background: url("../../static/img/about.jpg") center center; background-size: cover; }
+.bdabout { background: url("../../static/img/about.jpg") center center; }
 
 /* Specific 'body' class for portfolio.html */
-.bdport { background: url("../../static/img/portfolio.jpg") center center; background-size: cover; }
+.bdport { background: url("../../static/img/portfolio.jpg") center center; }
 
 a { text-decoration: none; color: white; }
 
