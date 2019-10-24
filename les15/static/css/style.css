@@ -60,7 +60,7 @@ section {
     width: 50%;
     height: auto;
     float: left;
-    //font-size: 16px;
+    font-size: 14px;
     padding: 35px;
     margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
 }
