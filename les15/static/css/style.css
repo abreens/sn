@@ -33,7 +33,7 @@ a { text-decoration: none; color: white; }
     align-items: center;
 }
 
-.navigation, section, .abrclogo, .buttonbanner { background-color: black; }
+.navigation, section, .buttonbanner { background-color: black; }
 
 .navigation {
     justify-content: flex-end; /* Rechts uitlijnen */
@@ -68,9 +68,12 @@ section {
     margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
 }
 
-section h2, p, img { margin-top: 0px; }
+section h2, p { margin-top: 0px; }
 
-section img { margin: 0 auto; }
+section img {
+    display: block;
+    margin: 0 auto;
+}
 
 /*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
 
