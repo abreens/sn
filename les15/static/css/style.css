@@ -81,15 +81,6 @@ section img {
     height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
 }
 
-/*** SPECIFIC STYLING FOR ABOUT_ME.HTML ***/
-
-.abrclogo {
-    width: 50%;
-    height: auto;
-    float: left;
-    padding: 25px 0 25px 0;
-}
-
 /*** SPECIFIC STYLING FOR PORTFOLIO.HTML ***/
 
 article {
