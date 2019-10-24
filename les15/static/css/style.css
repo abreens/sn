@@ -68,13 +68,14 @@ section {
     margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
 }
 
-section h2, p { margin-top: 0px; }
+section h2, p, img { margin-top: 0px; }
+
+section img { justify-content: center; }
 
 /*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
 
 .indexwrapper {
     height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
-    //border: 1px red solid;
 }
 
 /*** SPECIFIC STYLING FOR ABOUT_ME.HTML ***/
