@@ -24,11 +24,9 @@ body, .bdabout, .bdport {
 
 a { text-decoration: none; color: white; }
 
-a:hover { color: #1c80c1; }
-
 /*** BEGIN SITE STRUCTURE ***/
 
-.navigation, .indexwrapper, .artwrapper, .abrclogo, .buttonbanner {
+.navigation, .indexwrapper, .abrclogo, .buttonbanner {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -44,6 +42,8 @@ a:hover { color: #1c80c1; }
 }
 
 .navigation a { margin-right: 75px; }
+
+.navigation a:hover { color: #1c80c1; }
 
 .wrapper {
     margin: 50px auto;
@@ -70,7 +70,7 @@ section {
     margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
 }
 
-section h2{
+section h2 {
     margin-top: 10px;
 }
 
@@ -80,7 +80,7 @@ section h3 { margin-bottom: 15px; }
 
 /*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
 
-.indexwrapper{
+.indexwrapper {
     height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
     //border: 1px red solid;
 }
