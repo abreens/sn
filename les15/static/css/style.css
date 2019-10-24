@@ -70,7 +70,7 @@ section {
 
 section h2, p, img { margin-top: 0px; }
 
-section img { justify-content: center; }
+section img { text-align: center; }
 
 /*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
 
