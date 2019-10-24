@@ -37,7 +37,6 @@ a { text-decoration: none; color: white; }
     justify-content: flex-end; /* Rechts uitlijnen */
     height: 50px;
     background-color: black;
-    //background-color: red;
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
 }
 
@@ -53,7 +52,6 @@ a { text-decoration: none; color: white; }
 .title {
     width: 100%;
     text-align: left;
-    //margin-bottom: 5px;
 }
 
 .title h1 {
@@ -64,7 +62,7 @@ section {
     width: 50%;
     height: auto;
     float: left;
-    font-size: 14px;
+    font-size: 16px;
     background-color: black;
     padding: 35px;
     margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
@@ -95,7 +93,7 @@ section h3 { margin-bottom: 15px; }
     padding: 25px 0 25px 0;
 }
 
-/*** SPECIFIC STYLING FOR PORTFOLLIO.HTML ***/
+/*** SPECIFIC STYLING FOR PORTFOLIO.HTML ***/
 
 article {
     width: 100%;
