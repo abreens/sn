@@ -50,14 +50,11 @@ a { text-decoration: none; color: white; }
     width: 1200px;
 }
 
-.title {
-    width: 100%;
-    text-align: left;
-}
+.title, article, .buttonbanner { width: 100%; }
 
-.title h1 {
-    margin-bottom: 10px;
-}
+.title { text-align: left; }
+
+.title h1 { margin-bottom: 10px; }
 
 section {
     width: 50%;
@@ -83,18 +80,10 @@ section img {
 
 /*** SPECIFIC STYLING FOR PORTFOLIO.HTML ***/
 
-article {
-    width: 100%;
-    height: auto;
-    //float: left;
-    //background-color: black;
-    //padding: 25px 0 25px 0;
-    //border: 1px solid red;
-}
+// article { height: auto; }
 
 .buttonbanner{
     justify-content: left;
-    width: 100%;
     height: 110px;
 }
 
