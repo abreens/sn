@@ -68,7 +68,7 @@ section {
     margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
 }
 
-// section h2 { margin-top: 10px; }
+section h2 { margin-top: 0px; }
 
 section p { margin: 0px; }
 
