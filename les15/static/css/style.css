@@ -70,7 +70,7 @@ section {
 
 section h2, p, img { margin-top: 0px; }
 
-section img { text-align: center; }
+section img { margin: 0 auto; }
 
 /*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
 
