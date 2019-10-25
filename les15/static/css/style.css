@@ -129,7 +129,7 @@ article h2 { margin-bottom: 15px; }
         margin-bottom: 20px;
     }
 
-    .indexwrapper, .wrapper,  { width: 100%; }
+    .indexwrapper, .wrapper { width: 100%; }
 
     .banner, #logo, #fotobanner { display: none; }
 
