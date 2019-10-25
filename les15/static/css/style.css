@@ -103,6 +103,39 @@ article h2 { margin-bottom: 15px; }
 }
 
 
-/*** MEDIA QUERIES ***>
+/*** MEDIA QUERIES ***/
 
-/* TO BE COMPLETED */
+/* 1) Overgang naar FLEXIBLE DESIGN op 1200px (de breedte v/d .wrapper ;) */
+
+@media screen and (max-width: 1200px) {
+
+    .wrapper {
+        width : 100%;
+        min-width: 350px;
+    }
+
+}
+
+/* 2) Overgang naar RESPONSIVE DESIGN op 1025px (omdat dan het menu ambetant begint te doen) */
+
+@media screen and (max-width: 1025px) {
+
+    .navigation { flex-direction: column; }
+
+    .navigation {
+        align-items: flex-start; /* CROSS axis is nu horizontaal! */
+        height: 165px;
+        padding: 10px 0 10px 20px;
+        margin-bottom: 20px;
+    }
+
+    .indexwrapper, .wrapper,  { width: 100%; }
+
+    .banner, #logo, #fotobanner { display: none; }
+
+    /* Height of .navigation is 165px geworden */
+    .indexwrapper { height: calc(100% - 165px); }
+
+    .wrapper { margin-top: 0; }
+
+}
