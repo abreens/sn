@@ -1,0 +1,146 @@
+/*** ALGEMENE INSTELLINGEN EN BROWSER RESET ***/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* { box-sizing: border-box; }
+
+body, .bdabout, .bdport {
+    font-family: 'Open Sans', sans-serif;
+    text-align: justify;
+    color: white;
+    overflow: auto;
+    background: url("../../static/img/index.jpg") center center;
+    background-size: cover;
+}
+
+/* Specific 'body' class for about_me.html */
+.bdabout { background: url("../../static/img/about.jpg") center center; }
+
+/* Specific 'body' class for portfolio.html */
+.bdport { background: url("../../static/img/portfolio.jpg") center center; }
+
+a { 
+    text-decoration: none;
+    color: white; 
+}
+
+/*** BEGIN SITE STRUCTURE ***/
+
+.navigation, .indexwrapper, .buttonbanner, .knop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation, section, .buttonbanner { background-color: black; }
+
+.navigation {
+    justify-content: flex-end; /* Rechts uitlijnen */
+    height: 50px;
+    position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
+}
+
+.navigation a { margin-right: 75px; }
+
+.navigation a:hover { color: #1c80c1; }
+
+.wrapper {
+    margin: 50px auto;
+    width: 1200px;
+}
+
+article, .buttonbanner { width: 100%; }
+
+section {
+    width: 50%;
+    height: auto;
+    float: left;
+    font-size: 14px;
+    padding: 35px;
+    margin-bottom: 20px; /* Om de .articles te scheiden als ze onder elkaar staan */
+}
+
+section h2, p { margin-top: 0px; }
+
+section img {
+    display: block;
+    margin: 0 auto;
+}
+
+/*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
+
+.indexwrapper {
+    margin: 0 auto;
+    height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
+    width: 1200px;
+}
+
+/*** SPECIFIC STYLING FOR PORTFOLIO.HTML ***/
+
+article { margin-bottom: 65px; }
+
+article h2 { margin-bottom: 15px; }
+
+.buttonbanner{
+    justify-content: left;
+    height: 100px;
+}
+
+.knop {
+	width: 175px;
+    height: 40px;
+    background-color: #1c80c1;
+	margin-left: 25px;
+	font-size: 14px;
+    border-radius: 50px;
+}
+
+.knop:hover { 
+    background-color: #2c4fb1;
+}
+
+/*** MEDIA QUERIES ***/
+
+/* Overgang naar FLEXIBLE DESIGN op 1200px (de breedte v/d .wrapper ;) */
+
+@media screen and (max-width: 1200px) {
+
+    .indexwrapper, .wrapper { 
+        width : 100%; 
+        min-width: 350px;
+        padding: 0px;
+    }
+    
+    h1, h2 { margin-left: 20px; }
+    
+    section h2 { margin-left: 0px; }
+
+}
+
+/* Overgang naar RESPONSIVE DESIGN op 650px (omdat dan de knoppen ambetant beginnen te doen) */
+
+@media screen and (max-width: 650px) {
+
+    .navigation { 
+        flex-direction: column;
+        align-items: flex-start; /* CROSS axis is nu horizontaal! */
+        height: 90px;
+        padding: 10px 0 10px 20px;
+    }
+
+    section { width: 100%; }
+
+    /* Height of .navigation is 90px geworden */
+    .indexwrapper { height: calc(100% - 90px); }
+
+    .wrapper { margin-top: 0; }
+    
+    .buttonbanner { justify-content: space-around; }
+    
+    .knop { margin-left: 0px; }
+    
+}
