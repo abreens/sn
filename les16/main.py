@@ -1,6 +1,6 @@
 ###
 #
-# Les 15 - Flask Home Page
+# Les 16 - Flask Home Page with Jinja Templates
 #
 # Create a new Flask web app which will serve as your personal website. It should have the following pages:
 #    Index page (/), where you say hello to the visitors
