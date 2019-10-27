@@ -2,21 +2,9 @@
 #
 # Les 16 - Flask Home Page with Jinja Templates
 #
-# Create a new Flask web app which will serve as your personal website. It should have the following pages:
-#    Index page (/), where you say hello to the visitors
-#    About me page (/about)
-#    Portfolio page (/portfolio): contains links to sub-pages with your front-end projects
-#
-# The Portfolio page should have links to the HTML&CSS pages (projects) that you've created in the front-end
-# part of this course:
-#    Fakebook (/portfolio/fakebook)
-#    Boogle (/portfolio/boogle)
-#    Hair Salon (/portfolio/hair-salon)
-#
-# Create a separate handler (and URL route) for each of these pages.
+# Use Jinja to improve the HTML templates in your Homepage web app. Then deploy your homepage to Heroku (via GitHub).
 #
 ###
-
 
 from flask import Flask, render_template
 
