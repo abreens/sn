@@ -17,4 +17,3 @@ Les 13 - OOP
 Les 14 - Recap & PIP
 Les 15 - My first FlaskApp
 Les 16 - My first FlaskApp with Jinja templates
- 
