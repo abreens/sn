@@ -1,70 +1,41 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="en">
+{% block content %}
+    <div class="wrapper">
 
-    <head>
+        <h1>PORTFOLIO PAGE</h1>
 
-        <title>ABR Consultancy</title>
+        <article>
+            <h2>Smartninja Exercises</h2>
+            <div class="buttonbanner">
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/sn/les2/les2_fakebook.html"
+                                      title="Fakebook">FAKEBOOK</a></div>
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/sn/les3/les3_google.html"
+                                      title="Fakebook">BOOGLE</a></div>
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/sn/les5/"
+                                      title="Fakebook">HAIR DRESSER</a></div>
+            </div>
+        </article>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="ABR Consultancy">
+        <article>
+            <h2>Responsive Design Examples</h2>
+            <div class="buttonbanner">
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/cva/les11/weno.html"
+                                      title="Weno">WENO</a></div>
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/cva/les12/"
+                                      title="Panama">PANAMA</a></div>
+            </div>
+        </article>
 
-        <!-- Google font "Open Sans:300" & "Open Sans Condensed:300" & "Quicksand" -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:300|Quicksand&display=swap"
-              rel="stylesheet">
+        <article>
+            <h2>Mini Websites</h2>
+            <div class="buttonbanner">
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/cva/les10/"
+                                      title="Transparency">TRANSPARENCY</a></div>
+                 <div class="knop"><a href="http://abrconsultancy.hopto.me/"
+                                      title="ABR Consultancy">ABR CONSULTANCY</a></div>
+            </div>
+        </article>
 
-         <!-- Link to external stylesheet -->
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-
-    </head>
-
-    <body class = bdport>
-
-        <div class="navigation">
-            <a href="/" title="Home">HOME</a>
-            <a href="/about" title="About Me">ABOUT</a>
-            <a href="/portfolio" title="Portfolio">PORTFOLIO</a>
-        </div>
-
-        <div class="wrapper">
-
-            <h1>PORTFOLIO PAGE</h1>
-
-            <article>
-                <h2>Smartninja Exercises</h2>
-                <div class="buttonbanner">
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/sn/les2/les2_fakebook.html"
-                                          title="Fakebook">FAKEBOOK</a></div>
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/sn/les3/les3_google.html"
-                                          title="Fakebook">BOOGLE</a></div>
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/sn/les5/"
-                                          title="Fakebook">HAIR DRESSER</a></div>
-                </div>
-            </article>
-
-            <article>
-                <h2>Responsive Design Examples</h2>
-                <div class="buttonbanner">
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/cva/les11/weno.html"
-                                          title="Weno">WENO</a></div>
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/cva/les12/"
-                                          title="Panama">PANAMA</a></div>
-                </div>
-            </article>
-
-            <article>
-                <h2>Mini Websites</h2>
-                <div class="buttonbanner">
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/cva/les10/"
-                                          title="Transparency">TRANSPARENCY</a></div>
-                     <div class="knop"><a href="http://abrconsultancy.hopto.me/"
-                                          title="ABR Consultancy">ABR CONSULTANCY</a></div>
-                </div>
-            </article>
-        
-        </div>
-
-    </body>
-
-</html>
+    </div>
+{% endblock content %}
