@@ -15,6 +15,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+
+    # PLAYGROUND - Jinja variables
     some_text = "Message from the handler."
     current_year = datetime.datetime.now().year
 
