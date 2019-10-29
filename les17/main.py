@@ -1,8 +1,8 @@
 ###
 #
-# Les 17 - HTTP requests & Cookies
+# Les 16 - Flask Home Page with Jinja Templates
 #
-# <TBC>
+# Use Jinja to improve the HTML templates in your Homepage web app. Then deploy your homepage to Heroku (via GitHub).
 #
 ###
 
@@ -26,7 +26,7 @@ def index():
     return render_template("index.html", some_text=some_text, current_year=current_year, cities=cities)
 
 
-@app.route("/about", methods=["GET"])
+@app.route("/about")
 def about_me():
     # Connect handler to /about/about_me.html
     return render_template("about_me.html")
