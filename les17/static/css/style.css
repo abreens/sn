@@ -58,6 +58,7 @@ article, .buttonbanner { width: 100%; }
 section {
     width: 50%;
     height: auto;
+    height: 500px;
     float: left;
     font-size: 14px;
     padding: 35px;
