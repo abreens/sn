@@ -1,12 +1,12 @@
 ###
 #
-# Les 17 - Flask application with Jinja templates and HTTP requests
+# Les 17 - Flask application with Jinja templates, HTTP requests and cookies
 #
 ###
 
 import datetime
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 
 app = Flask(__name__)
 
@@ -28,8 +28,8 @@ def index():
 def about_me():
 
     if request.method == "GET":
-        # Connect handler to /about/about_me.html
-        return render_template("about_me.html")
+        user_name = request.cookies.get("user_name")
+        return render_template("about_me.html", name=user_name)
 
     elif request.method == "POST":
         contact_name = request.form.get("contact-name")
@@ -40,7 +40,10 @@ def about_me():
         print(contact_email)
         print(contact_message)
 
-        return render_template("success.html")
+        response = make_response(render_template("success.html"))
+        response.set_cookie("user_name", contact_name)
+
+        return response
 
 
 @app.route("/portfolio")
@@ -50,4 +53,4 @@ def portfolio():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
