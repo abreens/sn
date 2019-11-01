@@ -1,8 +1,6 @@
 ###
 #
-# Les 16 - Flask Home Page with Jinja Templates
-#
-# Use Jinja to improve the HTML templates in your Homepage web app. Then deploy your homepage to Heroku (via GitHub).
+# Les 17 - Flask application with Jinja templates and HTTP requests
 #
 ###
 
