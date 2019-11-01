@@ -71,6 +71,14 @@ section img {
     margin: 0 auto;
 }
 
+/*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
+
+.indexwrapper {
+    margin: 0 auto;
+    height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
+    width: 1200px;
+}
+
 /*** SPECIFIEKE STYLING VOOR ABOUT_ME.HTML ***/
 .formulier {
     justify-content: left;
@@ -90,14 +98,6 @@ input, textarea, button {
 textarea { height: 150px; }
 
 button { width: 100px; }
-
-/*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
-
-.indexwrapper {
-    margin: 0 auto;
-    height: calc(100% - 50px); /* 50px is de hoogte van de .navigation */
-    width: 1200px;
-}
 
 /*** SPECIFIC STYLING FOR PORTFOLIO.HTML ***/
 

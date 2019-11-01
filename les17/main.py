@@ -26,24 +26,23 @@ def index():
     return render_template("index.html", some_text=some_text, current_year=current_year, cities=cities)
 
 
-@app.route("/about")
+@app.route("/about", methods=["GET", "POST"])
 def about_me():
-    # Connect handler to /about/about_me.html
-    return render_template("about_me.html")
 
+    if request.method == "GET":
+        # Connect handler to /about/about_me.html
+        return render_template("about_me.html")
 
-@app.route("/contact", methods=["POST"])
-def contact():
-    # Contact handler
-    contact_name = request.form.get("contact-name")
-    contact_email = request.form.get("contact-email")
-    contact_message = request.form.get("contact-message")
+    elif request.method == "POST":
+        contact_name = request.form.get("contact-name")
+        contact_email = request.form.get("contact-email")
+        contact_message = request.form.get("contact-message")
 
-    print(contact_name)
-    print(contact_email)
-    print(contact_message)
+        print(contact_name)
+        print(contact_email)
+        print(contact_message)
 
-    return render_template("success.html")
+        return render_template("success.html")
 
 
 @app.route("/portfolio")
