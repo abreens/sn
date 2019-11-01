@@ -26,18 +26,21 @@
 
         <br />
         <h1>CONTACT ME</h1>
-        <form method="post" action="/contact">
-            <input type="text" name="contact-name" placeholder="Enter your name">
-            <br>
 
-            <input type="email" name="contact-email" placeholder="Enter email address">
-            <br>
+        <div class = formulier>
+            <form method="post" action="/contact">
+                <input type="text" name="contact-name" placeholder="Enter your name">
+                <br>
 
-            <textarea name="contact-message" placeholder="Enter your message"></textarea>
-            <br>
+                <input type="email" name="contact-email" placeholder="Enter email address">
+                <br>
 
-            <button type="submit">Submit</button>
-        </form>
+                <textarea name="contact-message" placeholder="Enter your message"></textarea>
+                <br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
     </div>
 {% endblock content %}
