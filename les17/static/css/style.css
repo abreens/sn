@@ -29,7 +29,7 @@ a {
 
 /*** BEGIN SITE STRUCTURE ***/
 
-.navigation, .indexwrapper, .buttonbanner, .knop, .formulier {
+.navigation, .indexwrapper, .buttonbanner, .knop, .formulier, .titel {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -53,11 +53,13 @@ a {
     width: 1200px;
 }
 
-article, .buttonbanner { width: 100%; }
+article, .buttonbanner, .titel { width: 100%; }
+
+.titel { justify-content: left; }
 
 section {
     width: 50%;
-    height: 500px;
+    //height: 500px;
     float: left;
     font-size: 14px;
     padding: 35px;
@@ -135,7 +137,7 @@ article h2 { margin-bottom: 15px; }
         padding: 0px;
     }
     
-    h1, h2 { margin-left: 20px; }
+    h1, h2, p { margin-left: 20px; }
     
     section h2 { margin-left: 0px; }
 
@@ -157,7 +159,7 @@ article h2 { margin-bottom: 15px; }
     /* Height of .navigation is 90px geworden */
     .indexwrapper { height: calc(100% - 90px); }
 
-    .wrapper { margin-top: 0; }
+    .wrapper { margin-top: 0px 0px 0px 20px; }
     
     .buttonbanner { justify-content: space-around; }
     
