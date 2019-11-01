@@ -14,11 +14,12 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    # PLAYGROUND - Jinja variables
+    """PLAYGROUND - Jinja variables
     some_text = "Message from the handler."
     current_year = datetime.datetime.now().year
 
     cities = ["Boston", "Vienna", "Paris", "Berlin"]
+    END PLAYGROUND"""
 
     # Connect handler to /index.html
     return render_template("index.html", some_text=some_text, current_year=current_year, cities=cities)
