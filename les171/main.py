@@ -29,12 +29,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-
     # Connect handler to /index.html
     return render_template("index.html")
 
 
-@app.route("/about", methods=["GET", "POST"])
+@app.route("/result", methods=["GET", "POST"])
 def about_me():
     if request.method == "GET":
         user_name = request.cookies.get("user_name")

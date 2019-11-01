@@ -10,43 +10,36 @@ html, body {
 body {
     font-family: 'Open Sans', sans-serif;
     text-align: justify;
-    //color: white;
     overflow: auto;
-    //background-size: cover;
 }
 
 /*** BEGIN SITE STRUCTURE ***/
 
-.wrapper, .knop, .formulier, .titel {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+.titel, .formulier, form, input, textarea { width: 100%; }
 
-.formulier { background-color: black; }
+.formulier {
+    background-color: black;
+    //margin: 20px;
+}
 
 .wrapper {
     margin: 50px auto;
     width: 1200px;
+    //border: 1px solid red;
 }
 
-.titel { width: 100%; justify-content: left; }
+.titel {
+    justify-content: left;
+    //margin-left: 20px;
+}
 
 /*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
 
-.formulier {
-    justify-content: left;
-    width: 100%;
-    padding: 20px;
-}
-
-form { width: 50%; }
+.formulier { padding: 20px; }
 
 input, textarea, button {
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 15px;
-    width: 100%;
     padding: 5px;
 }
 
