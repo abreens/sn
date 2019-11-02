@@ -57,7 +57,8 @@ def result():
         if 1 <= guess <= 30:
             # De invoer ligt tussen 1 en 30
             if guess == secret_number:
-                message = "Het geheime nummer is inderdaad " + str(secret_number) + "."
+                message = "Het geheime nummer is inderdaad " + str(secret_number) + ". " + \
+                          "Een nieuw geheim nummer wordt ingesteld..."
                 response = make_response(render_template("result_success.html", message=message))
                 # Een nieuw geheim nummer initialiseren
                 response.set_cookie("secret_number", str(random.randint(1, 30)))
