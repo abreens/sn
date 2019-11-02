@@ -53,11 +53,11 @@ button { width: 100px; }
 /*** SPECIFIEKE STYLING VOOR RESULT_ERROR.HTML AND RESULT_SUCCESS.HTML ***/
 
 .roodvlak {
-    background-color: #d6d8db;
     //background-color: red;
-    border: 1px solid green;
+    background-color: #f8d7da;
+    border: 1px solid red;
     padding: 20px;
-    color: darkgreen;
+    color: darkred;
 }
 
 .roodvlak a { color: black; }
