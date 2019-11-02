@@ -32,27 +32,10 @@ def index():
     # Connect handler to /index.html
     return render_template("index.html")
 
-
-@app.route("/result", methods=["GET", "POST"])
-def about_me():
-    if request.method == "GET":
-        user_name = request.cookies.get("user_name")
-        return render_template("about_me.html", name=user_name)
-
-    elif request.method == "POST":
-        contact_name = request.form.get("contact-name")
-        contact_email = request.form.get("contact-email")
-        contact_message = request.form.get("contact-message")
-
-        print(contact_name)
-        print(contact_email)
-        print(contact_message)
-
-        response = make_response(render_template("success.html"))
-        response.set_cookie("user_name", contact_name)
-
-        return response
-
+@app.route("/result")
+def result():
+    # Connect handler to /result.html
+    return render_template("result.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
