@@ -30,11 +30,11 @@ app = Flask(__name__)
 def index():
     # Het geheime nummer inlezen
     secret_number = request.cookies.get("secret_number")
-
     response = make_response(render_template("index.html"))
+
     # Checken of het geheime nummer bestaat
     if not secret_number:
-        # if not, create new cookie
+        # Create new cookie
         new_secret = random.randint(1, 30)
         response.set_cookie("secret_number", str(new_secret))
 
