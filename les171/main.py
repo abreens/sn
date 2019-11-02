@@ -51,27 +51,27 @@ def result():
     except ValueError:
         # Foutieve invoer opvangen
         message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
-        return render_template("result.html", message=message)
+        return render_template("result_error.html", message=message)
     else:
         # De invoer was een geheel getal
         if 1 <= guess <= 30:
             # De invoer ligt tussen 1 en 30
             if guess == secret_number:
-                message = "CORRECT! Het geheime nummer is " + str(secret_number) + "."
-                response = make_response(render_template("result.html", message=message))
+                message = "Het geheime nummer is inderdaad " + str(secret_number) + "."
+                response = make_response(render_template("result_success.html", message=message))
                 # Een nieuw geheim nummer initialiseren
                 response.set_cookie("secret_number", str(random.randint(1, 30)))
                 return response
             elif guess > secret_number:
                 message = "Your guess is not correct... try something smaller."
-                return render_template("result.html", message=message)
+                return render_template("result_error.html", message=message)
             elif guess < secret_number:
                 message = "Your guess is not correct... try something bigger."
-                return render_template("result.html", message=message)
+                return render_template("result_error.html", message=message)
         else:
             # Out of bounds
             message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
-            return render_template("result.html", message=message)
+            return render_template("result_error.html", message=message)
 
 
 if __name__ == '__main__':
