@@ -52,17 +52,17 @@ button { width: 100px; }
 
 /*** SPECIFIEKE STYLING VOOR RESULT_ERROR.HTML AND RESULT_SUCCESS.HTML ***/
 
-.roodvlak {
-    background-color: #f8d7da;
-    border: 1px solid red;
-    padding: 20px;
-    color: darkred;
-}
-
 .groenvlak {
     background-color: #c3e6cb;
     border: 1px solid green;
     padding: 20px;
     color: darkgreen;
+}
+
+.roodvlak {
+    background-color: #f8d7da;
+    border: 1px solid red;
+    padding: 20px;
+    color: darkred;
 }
 
