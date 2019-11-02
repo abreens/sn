@@ -20,22 +20,59 @@
 #
 ###
 
-import datetime
-
+import random
 from flask import Flask, render_template, request, make_response
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
-    # Connect handler to /index.html
-    return render_template("index.html")
+    # Het geheime nummer inlezen
+    secret_number = request.cookies.get("secret_number")
 
-@app.route("/result")
+    response = make_response(render_template("index.html"))
+    # Checken of het geheime nummer bestaat
+    if not secret_number:
+        # if not, create new cookie
+        new_secret = random.randint(1, 30)
+        response.set_cookie("secret_number", str(new_secret))
+
+    return response
+
+
+@app.route("/result", methods=["POST"])
 def result():
-    # Connect handler to /result.html
-    return render_template("result.html")
+    secret_number = int(request.cookies.get("secret_number"))
+    invoer = request.form.get("guess")
+
+    try:
+        guess = int(invoer)
+    except ValueError:
+        # Foutieve invoer opvangen
+        message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
+        return render_template("result.html", message=message)
+    else:
+        # De invoer was een geheel getal
+        if 1 <= guess <= 30:
+            # De invoer ligt tussen 1 en 30
+            if guess == secret_number:
+                message = "CORRECT! Het geheime nummer is " + str(secret_number) + "."
+                response = make_response(render_template("result.html", message=message))
+                # Een nieuw geheim nummer initialiseren
+                response.set_cookie("secret_number", str(random.randint(1, 30)))
+                return response
+            elif guess > secret_number:
+                message = "Your guess is not correct... try something smaller."
+                return render_template("result.html", message=message)
+            elif guess < secret_number:
+                message = "Your guess is not correct... try something bigger."
+                return render_template("result.html", message=message)
+        else:
+            # Out of bounds
+            message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
+            return render_template("result.html", message=message)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
