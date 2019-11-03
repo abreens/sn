@@ -1,7 +1,8 @@
 import os
 from sqla_wrapper import SQLAlchemy
 
-db = SQLAlchemy(os.getenv("DATABASE_URL", "sqlite:///localhost.sqlite"))  # this connects to a database either on Heroku or on localhost
+# this connects to a database either on Heroku or on localhost
+db = SQLAlchemy(os.getenv("DATABASE_URL", "sqlite:///localhost.sqlite"))
 
 
 class User(db.Model):
