@@ -2,7 +2,7 @@
 
 html, body {
     height: 100%;
-    margin: 0;
+    margin: 20px;
     padding: 0;
 }
 
@@ -12,57 +12,13 @@ body {
     font-family: 'Open Sans', sans-serif;
     text-align: justify;
     overflow: auto;
+    //margin-left: 20px;
 }
 
 /*** BEGIN SITE STRUCTURE ***/
 
-.titel, .formulier, form, input, .groenvlak, .roodvlak { width: 100%; }
-
-.wrapper {
-    margin: 50px auto;
-    width: 1200px;
-    background-color: lightgray;
-    padding: 20px;
-    border: 1px solid black;
+/*** SPECIFIC STYLING FOR INDEX.HTML ***/
+input {
+    margin-bottom: 20px;
+    width: 350px;
 }
-
-.titel {
-    justify-content: left;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-/*** SPECIFIEKE STYLING VOOR INDEX.HTML ***/
-
-.formulier {
-    background-color: black;
-    padding: 20px;
-}
-
-input, button {
-    font-family: 'Open Sans', sans-serif;
-    margin-bottom: 5px;
-    padding: 5px;
-}
-
-button { width: 100px; }
-
-/*** SPECIFIEKE STYLING VOOR RESULT_ERROR.HTML AND RESULT_SUCCESS.HTML ***/
-
-.groenvlak {
-    background-color: #c3e6cb;
-    border: 1px solid green;
-    padding: 20px;
-    color: darkgreen;
-}
-
-.roodvlak {
-    background-color: #f8d7da;
-    border: 1px solid red;
-    padding: 20px;
-    color: darkred;
-}
-
