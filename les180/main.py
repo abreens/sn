@@ -15,13 +15,12 @@ db.create_all() # create (new) tables in the database
 def index():
     email_address = request.cookies.get("email")
 
-    # get user from the database based on email address
-    user = db.query(User).filter_by(email=email_address).first()
+    if email_address:
+        user = db.query(User).filter_by(email=email_address).first()
+    else:
+        user = None
 
-    print("Hello")
-    print(user.name)
-
-    return render_template("index.html")
+    return render_template("index.html", user=user)
 
 
 @app.route("/login", methods=["POST"])
