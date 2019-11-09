@@ -2,11 +2,18 @@
 
 {% block content %}
     <div class="wrapper">
-        <div class="roodvlak">
-            <h1>ERROR!</h1>
-            <h3>{{ message }}</h3>
-            <button><a href="/">Nieuwe gok</a></button>
-        </div>
+
+        {% if error_code == "NOK" %}
+            <div class="roodvlak">
+                <h1>ERROR! Gelukt</h1>
+                <h3>{{ message }}</h3>
+                <button><a href="/">Nieuwe gok</a></button>
+            </div>
+
+        {% else %}
+            <p>Under construction</p>
+        {% endif %}
+
     </div>
 
 {% endblock content %}

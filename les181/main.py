@@ -47,7 +47,8 @@ def result():
     except ValueError:
         # Foutieve invoer opvangen
         message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
-        return render_template("result_error.html", message=message)
+        error_code = "NOK"
+        return render_template("result_error.html", message=message, error_code=error_code)
     else:
         # De invoer was een geheel getal
         if 1 <= guess <= 30:
@@ -72,4 +73,4 @@ def result():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
