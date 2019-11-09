@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="wrapper">
+
+        <div class="titel">
+            <h1>Welcome to the Guess The Secret Number Game</h1>
+            <h3>Raad het geheime getal (tussen 1 en 30)</h3>
+        </div>
+
+        <div class = formulier>
+            <form method="post" action="/result">
+                <input type="text" name="guess" placeholder="Uw gok?">
+                <br>
+                <br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock content %}
