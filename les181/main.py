@@ -20,26 +20,55 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 from models import User, db
 
 app = Flask(__name__)
+db.create_all()  # create (new) tables in the database
 
 
 @app.route("/", methods=["GET"])
 def index():
-    # Het geheime nummer inlezen
-    secret_number = request.cookies.get("secret_number")
-    response = make_response(render_template("index.html"))
+    # Een eMail adres uit cookie "email" lezen
+    email_address = request.cookies.get("email")
 
-    # Checken of het geheime nummer bestaat
-    if not secret_number:
-        # Create new cookie
-        new_secret = random.randint(1, 30)
-        response.set_cookie("secret_number", str(new_secret))
+    if email_address:
+        # Cookie bestaat, haal gebruikersgegevens op uit de databank
+        user = db.query(User).filter_by(email=email_address).first()
+    else:
+        # Cookie bestaat niet, initialiseer de gebruiker op None
+        user = None
+
+    return render_template("index.html", user=user)
+
+
+@app.route("/login", methods=["POST"])
+def login():
+    name = request.form.get("user-name")
+    email = request.form.get("user-email")
+
+    # see if user already exists
+    user = db.query(User).filter_by(email=email).first()
+
+    if not user:
+        # create a User object
+        secret_number = random.randint(1, 30)
+        user = User(name=name, email=email, secret_number=secret_number)
+
+        # save the user object into a database
+        db.add(user)
+        db.commit()
+
+    # save user's email into a cookie
+    response = make_response(redirect(url_for('index')))
+    response.set_cookie("email", email)
 
     return response
 
 
 @app.route("/result", methods=["POST"])
 def result():
-    secret_number = int(request.cookies.get("secret_number"))
+    # get user from the database based on his / her eMail address from cookie "email"
+    email_address = request.cookies.get("email")
+    user = db.query(User).filter_by(email=email_address).first()
+
+    # Invoer komende van index.html lezen
     invoer = request.form.get("guess")
     code = "NOK"
 
@@ -53,18 +82,24 @@ def result():
         # De invoer was een geheel getal
         if 1 <= guess <= 30:
             # De invoer ligt tussen 1 en 30
-            if guess == secret_number:
-                message = "Het geheime nummer is inderdaad " + str(secret_number) + ". " + \
+            if guess == user.secret_number:
+                message = "Het geheime nummer is inderdaad " + str(user.secret_number) + ". " + \
                           "Een nieuw geheim nummer wordt ingesteld..."
                 code = "OK"
                 response = make_response(render_template("result.html", message=message, code=code))
+
                 # Een nieuw geheim nummer initialiseren
-                response.set_cookie("secret_number", str(random.randint(1, 30)))
+                new_secret = random.randint(1, 30)
+                user.secret_number = new_secret
+                db.add(user)
+                db.commit()
+
                 return response
-            elif guess > secret_number:
+
+            elif guess > user.secret_number:
                 message = "Your guess is not correct... try something smaller."
                 return render_template("result.html", message=message, code=code)
-            elif guess < secret_number:
+            elif guess < user.secret_number:
                 message = "Your guess is not correct... try something bigger."
                 return render_template("result.html", message=message, code=code)
         else:
