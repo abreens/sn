@@ -12,10 +12,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     text-align: justify;
     overflow: auto;
-    //margin-left: 20px;
 }
-
-/*** BEGIN SITE STRUCTURE ***/
 
 /*** SPECIFIC STYLING FOR INDEX.HTML ***/
 input {
