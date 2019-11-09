@@ -19,7 +19,7 @@ def index():
     user = db.query(User).filter_by(email=email_address).first()
 
     print("Hello")
-    print("De user is: " + user.name)
+    print(user.name)
 
     return render_template("index.html")
 
