@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 from models import User, db
 
 app = Flask(__name__)
-db.create_all() # create (new) tables in the database
+db.create_all()  # create (new) tables in the database
 
 
 @app.route("/")
