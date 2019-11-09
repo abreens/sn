@@ -1,27 +1,23 @@
 ###
 #
-# Les 17.1 - Guess the secret number game
+# Exercise 18.1 - Update the Guess a secret number game
 #
-# Create a new Flask web app that will have a GET and a POST request handler.
-# They can be both in one handler, or each in a separate handler (it doesn't matter).
+# Now that you've learned how to save an object into a database and read from it, you can update the
+# "Guess a secret number" game.
 #
-# In the GET handler you'll do the following things:
-#   Check if there's a cookie with the name "secret_number".
-#   If there isn't any such cookie, create a new cookie with this name.
-#   The new cookie should store a random number between 1 and 30.
+# Your user model should have the following fields:
+#   id (integer)
+#   name (string)
+#   email (string)
+#   secret_number (integer)
 #
-# The POST handler should do the following:
-#   Get the secret_number cookie.
-#   Get the user's guess from the HTML form.
-#   Compare the guess and the secret_number
-#   If the guess is the same as the secret number, set a new random number in the cookie and return the user a
-#   result.html page with a congrats message.
-#   If not, return the user the result.html page with a message saying whether the guess was too big or too small.
+# The secret_number field will hold the secret number that user has to guess.
 #
 ###
 
 import random
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request, redirect, url_for, make_response
+from models import User, db
 
 app = Flask(__name__)
 
