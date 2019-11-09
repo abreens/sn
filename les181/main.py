@@ -41,13 +41,13 @@ def index():
 def result():
     secret_number = int(request.cookies.get("secret_number"))
     invoer = request.form.get("guess")
+    code = "NOK"
 
     try:
         guess = int(invoer)
     except ValueError:
         # Foutieve invoer opvangen
         message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
-        code = "NOK"
         return render_template("result.html", message=message, code=code)
     else:
         # De invoer was een geheel getal
@@ -63,16 +63,13 @@ def result():
                 return response
             elif guess > secret_number:
                 message = "Your guess is not correct... try something smaller."
-                code = "NOK"
                 return render_template("result.html", message=message, code=code)
             elif guess < secret_number:
                 message = "Your guess is not correct... try something bigger."
-                code = "NOK"
                 return render_template("result.html", message=message, code=code)
         else:
             # Out of bounds
             message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
-            code = "NOK"
             return render_template("result.html", message=message, code=code)
 
 
