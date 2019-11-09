@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="wrapper">
+
+        {% if code == "NOK" %}
+            <div class="roodvlak">
+                <h1>ERROR!</h1>
+                <h3>{{ message }}</h3>
+            </div>
+
+        {% else %}
+            <div class="groenvlak">
+                <h1>SUCCESS!</h1>
+                <h3>{{ message }}</h3>
+            </div>
+        {% endif %}
+
+        <br />
+        <button><a href="/">Nieuwe gok</a></button>
+
+    </div>
+
+{% endblock content %}

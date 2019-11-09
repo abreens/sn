@@ -47,8 +47,8 @@ def result():
     except ValueError:
         # Foutieve invoer opvangen
         message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
-        error_code = "NOK"
-        return render_template("result_error.html", message=message, error_code=error_code)
+        code = "NOK"
+        return render_template("result.html", message=message, code=code)
     else:
         # De invoer was een geheel getal
         if 1 <= guess <= 30:
@@ -56,20 +56,24 @@ def result():
             if guess == secret_number:
                 message = "Het geheime nummer is inderdaad " + str(secret_number) + ". " + \
                           "Een nieuw geheim nummer wordt ingesteld..."
-                response = make_response(render_template("result_success.html", message=message))
+                code = "OK"
+                response = make_response(render_template("result.html", message=message, code=code))
                 # Een nieuw geheim nummer initialiseren
                 response.set_cookie("secret_number", str(random.randint(1, 30)))
                 return response
             elif guess > secret_number:
                 message = "Your guess is not correct... try something smaller."
-                return render_template("result_error.html", message=message)
+                code = "NOK"
+                return render_template("result.html", message=message, code=code)
             elif guess < secret_number:
                 message = "Your guess is not correct... try something bigger."
-                return render_template("result_error.html", message=message)
+                code = "NOK"
+                return render_template("result.html", message=message, code=code)
         else:
             # Out of bounds
             message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
-            return render_template("result_error.html", message=message)
+            code = "NOK"
+            return render_template("result.html", message=message, code=code)
 
 
 if __name__ == '__main__':
