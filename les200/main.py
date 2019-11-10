@@ -1,17 +1,6 @@
 ###
 #
-# Exercise 18.1 - Update the Guess a secret number game
-#
-# Now that you've learned how to save an object into a database and read from it, you can update the
-# "Guess a secret number" game.
-#
-# Your user model should have the following fields:
-#   id (integer)
-#   name (string)
-#   email (string)
-#   secret_number (integer)
-#
-# The secret_number field will hold the secret number that user has to guess.
+# Les 20 - An authentication System
 #
 ###
 
