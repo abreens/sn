@@ -31,15 +31,15 @@ def index():
 def login():
     name = request.form.get("user-name")
     email = request.form.get("user-email")
+    password = request.form.get("user-password")
 
     # see if user already exists
-    user = db.query(User).filter_by(email=email).first()
+    user = User.fetch_one(query=["email", "==", email])
 
     if not user:
         # create a User object
         secret_number = random.randint(1, 30)
-        user = User(name=name, email=email, secret_number=secret_number)
-
+        user = User(name=name, email=email, secret_number=secret_number, password=password)
         # save the user object into a database
         db.add(user)
         db.commit()
