@@ -112,8 +112,8 @@ def result():
 
 @app.route("/reset_user")
 def reset_user():
-    # Cookie "email" deleten
-    response = make_response(render_template("index.html"))
+    # Cookie "email" deleten zodat de gebruiker terug moet aanloggen
+    response = make_response(redirect(url_for('index')))
     response.set_cookie("user_name", expires=0)
 
     return response
