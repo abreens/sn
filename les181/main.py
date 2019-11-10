@@ -91,6 +91,8 @@ def result():
                 # Een nieuw geheim nummer initialiseren
                 new_secret = random.randint(1, 30)
                 user.secret_number = new_secret
+
+                # Update the user object in the database
                 db.add(user)
                 db.commit()
 
@@ -106,6 +108,15 @@ def result():
             # Out of bounds
             message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
             return render_template("result.html", message=message, code=code)
+
+
+@app.route("/reset_user")
+def reset_user():
+    # Cookie "email" deleten
+    response = make_response(render_template("index.html"))
+    response.set_cookie("user_name", expires=0)
+
+    return response
 
 
 if __name__ == '__main__':
