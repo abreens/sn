@@ -5,6 +5,8 @@
 ###
 
 import random
+import uuid
+import hashlib
 from flask import Flask, render_template, request, redirect, url_for, make_response
 from models import User, db
 
@@ -14,12 +16,12 @@ db.create_all()  # create (new) tables in the database
 
 @app.route("/", methods=["GET"])
 def index():
-    # Een eMail adres uit cookie "email" lezen
-    email_address = request.cookies.get("email")
+    # Session token uit cookie "session_token" lezen
+    session_token = request.cookies.get("session_token")
 
-    if email_address:
+    if session_token:
         # Cookie bestaat, haal gebruikersgegevens op uit de databank
-        user = db.query(User).filter_by(email=email_address).first()
+        user = db.query(User).filter_by(session_token=session_token).first()
     else:
         # Cookie bestaat niet, initialiseer de gebruiker op None
         user = None
@@ -33,33 +35,44 @@ def login():
     email = request.form.get("user-email")
     password = request.form.get("user-password")
 
+    # hash the password
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
     # see if user already exists
     user = db.query(User).filter_by(email=email).first()
 
     if not user:
         # create a User object
         secret_number = random.randint(1, 30)
-        user = User(name=name, email=email, secret_number=secret_number, password=password)
+        user = User(name=name, email=email, secret_number=secret_number, password=hashed_password)
         # save the user object into a database
         db.add(user)
         db.commit()
-    else:
-        # User exists. Check if password matches.
-        if password != user.password:
-            return "WRONG PASSWORD! Go back and try again"
 
-    # save user's email into a cookie
+    # Check if password matches.
+    if hashed_password != user.password:
+        return "WRONG PASSWORD! Go back and try again"
+    elif hashed_password == user.password:
+        # Create a random session token for this user
+        session_token = str(uuid.uuid4())
+
+        # Save the session token in the database
+        user.session_token = session_token
+        db.add(user)
+        db.commit()
+
+    # save user's session token into a cookie
     response = make_response(redirect(url_for('index')))
-    response.set_cookie("email", email)
+    response.set_cookie("session_token", session_token, httponly=True, samesite='Strict')
 
     return response
 
 
 @app.route("/result", methods=["POST"])
 def result():
-    # get user from the database based on his / her eMail address from cookie "email"
-    email_address = request.cookies.get("email")
-    user = db.query(User).filter_by(email=email_address).first()
+    # get user from the database based on his / her session token from cookie "session_token"
+    session_token = request.cookies.get("session_token")
+    user = db.query(User).filter_by(session_token=session_token).first()
 
     # Invoer komende van index.html lezen
     invoer = request.form.get("guess")
