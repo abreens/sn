@@ -51,7 +51,7 @@ def login():
 
     # Check if password matches.
     if hashed_password != user.password:
-        return "WRONG PASSWORD! Go back and try again"
+        return render_template("wrong_password.html")
     elif hashed_password == user.password:
         # Create a random session token for this user
         session_token = str(uuid.uuid4())
