@@ -34,7 +34,7 @@ def login():
     password = request.form.get("user-password")
 
     # see if user already exists
-    user = User.fetch_one(query=["email", "==", email])
+    user = db.query(User).filter_by(email=email).first()
 
     if not user:
         # create a User object
