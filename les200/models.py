@@ -11,4 +11,5 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)  # email must be unique! Two users cannot have the same email address
     secret_number = db.Column(db.Integer, unique=False)  # must NOT be unique across user object
     password = db.Column(db.String)
+    session_token = db.Column(db.String)
 

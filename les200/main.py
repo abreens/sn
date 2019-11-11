@@ -43,6 +43,10 @@ def login():
         # save the user object into a database
         db.add(user)
         db.commit()
+    else:
+        # User exists. Check if password matches.
+        if password != user.password:
+            return "WRONG PASSWORD! Go back and try again"
 
     # save user's email into a cookie
     response = make_response(redirect(url_for('index')))
