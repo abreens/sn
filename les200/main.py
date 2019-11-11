@@ -116,5 +116,12 @@ def result():
             return render_template("result.html", message=message, code=code)
 
 
+@app.route("/reset_user")
+def reset_user():
+    # User op None zetten zodat er terug moet worden ingelogged
+    user = None
+    return render_template("index.html", user=user)
+
+
 if __name__ == '__main__':
     app.run()
