@@ -106,3 +106,8 @@ venv.bak/
 # PyCharm
 .idea/
 /les13/guessthesecretnumber.py
+
+# Custom Content
+*.pyc
+db.json
+secrets.py
