@@ -28,7 +28,6 @@ body {
 .navigation {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
     justify-content: flex-end; /* Rechts uitlijnen */
     height: 50px;
@@ -36,18 +35,16 @@ body {
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
 }
 
-.navigation a { margin-right: 75px; }
+.navigation a {
+    text-decoration: none;
+    color: black;
+    margin-right: 50px;
+}
 
 .navigation a:hover { color: #1c80c1; }
 
 .titel {
     justify-content: left;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-    margin-right: 25px;
 }
 
 .formulier {
