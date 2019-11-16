@@ -31,11 +31,6 @@ body {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-}
-
-.navigation, section, .buttonbanner, .formulier { background-color: black; }
-
-.navigation {
     justify-content: flex-end; /* Rechts uitlijnen */
     height: 50px;
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
