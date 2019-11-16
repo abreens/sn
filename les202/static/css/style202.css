@@ -21,8 +21,7 @@ body {
 .wrapper {
     margin: 50px auto;
     width: 1200px;
-    //padding: 20px;
-    border: 1px solid black;
+    //border: 1px solid black;
 }
 
 .navigation {
