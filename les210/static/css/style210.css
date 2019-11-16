@@ -26,13 +26,27 @@ body {
     border: 1px solid black;
 }
 
-.titel {
-    justify-content: left;
-}
-
 a {
     text-decoration: none;
     color: black;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: black;
+    height: 50px;
+    position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
+}
+
+.navigation a { margin-right: 75px; }
+
+.navigation a:hover { color: #1c80c1; }
+
+.titel {
+    justify-content: left;
 }
 
 .formulier {
