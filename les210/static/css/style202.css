@@ -1,0 +1,41 @@
+/*** ALGEMENE INSTELLINGEN EN BROWSER RESET ***/
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: justify;
+    overflow: auto;
+}
+
+/*** BEGIN SITE STRUCTURE ***/
+
+.wrapper {
+    margin: 50px auto;
+    width: 1200px;
+    //border: 1px solid black;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end; /* Rechts uitlijnen */
+    height: 50px;
+    background-color: lightgray;
+    position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
+}
+
+.navigation a {
+    text-decoration: none;
+    color: black;
+    margin-right: 50px;
+}
+
+.navigation a:hover { color: #1c80c1; }
