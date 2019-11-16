@@ -68,6 +68,18 @@ def login():
     return response
 
 
+@app.route("/profile", methods=["GET"])
+def profile():
+    session_token = request.cookies.get("session_token")
+
+    # get user from the database based on her/his email address
+    user = db.query(User).filter_by(session_token=session_token).first()
+
+    if user:
+        return render_template("profile.html", user=user)
+    else:
+        return redirect(url_for("index"))
+
 @app.route("/result", methods=["POST"])
 def result():
     # get user from the database based on his / her session token from cookie "session_token"
@@ -118,10 +130,10 @@ def result():
 
 @app.route("/reset_user")
 def reset_user():
-    # User op None zetten zodat er terug moet worden ingelogged
-    user = None
-    return render_template("index.html", user=user)
-
+    # Cookie zodat er terug moet worden ingelogged
+    response = make_response(redirect(url_for('index')))
+    response.set_cookie("session_token", expires=0)
+    return response
 
 if __name__ == '__main__':
     app.run(debug = True)
