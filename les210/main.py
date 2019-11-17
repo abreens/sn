@@ -57,7 +57,7 @@ def login():
     if hashed_password != user.password:
         message = "Go back and try again."
         code = "wrong_pwd"
-        return render_template("result.html", message=message, code=code)
+        return render_template("result.html", user=user, message=message, code=code)
     elif hashed_password == user.password:
         # Create a random session token for this user
         session_token = str(uuid.uuid4())
@@ -101,7 +101,7 @@ def result():
     except ValueError:
         # Foutieve invoer opvangen
         message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
-        return render_template("result.html", message=message, code=code)
+        return render_template("result.html", user=user, message=message, code=code)
     else:
         # De invoer was een geheel getal
         if 1 <= guess <= 30:
@@ -110,7 +110,7 @@ def result():
                 message = "Het geheime nummer is inderdaad " + str(user.secret_number) + ". " + \
                           "Een nieuw geheim nummer wordt ingesteld..."
                 code = "OK"
-                response = make_response(render_template("result.html", message=message, code=code))
+                response = make_response(render_template("result.html", user=user, message=message, code=code))
 
                 # Een nieuw geheim nummer initialiseren
                 new_secret = random.randint(1, 30)
@@ -124,14 +124,14 @@ def result():
 
             elif guess > user.secret_number:
                 message = "Your guess is not correct... try something smaller."
-                return render_template("result.html", message=message, code=code)
+                return render_template("result.html", user=user, message=message, code=code)
             elif guess < user.secret_number:
                 message = "Your guess is not correct... try something bigger."
-                return render_template("result.html", message=message, code=code)
+                return render_template("result.html", user=user, message=message, code=code)
         else:
             # Out of bounds
             message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
-            return render_template("result.html", message=message, code=code)
+            return render_template("result.html", user=user, message=message, code=code)
 
 
 @app.route("/logout")
