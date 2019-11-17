@@ -112,6 +112,9 @@ def profile_edit():
 
         return redirect(url_for("profile"))
 
+@app.route("/profile/delete", methods=["GET"])
+def profile_delete():
+    return render_template("profile_delete.html")
 
 @app.route("/result", methods=["POST"])
 def result():

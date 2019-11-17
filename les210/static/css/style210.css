@@ -51,6 +51,8 @@ a {
 
 .navigation a:hover { color: #1c80c1; }
 
+form p { text-align: left; }
+
 .titel {
     justify-content: left;
 }
