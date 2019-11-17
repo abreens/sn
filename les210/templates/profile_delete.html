@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %}Delete profile{% endblock title %}
+
 {% block content %}
 
-    <H3>DELETE YOUR PROFILE</H3>
+    <div class="title">
+        <H3>DELETE YOUR PROFILE</H3>
+    </div>
 
-    <p>Under Constructions...</p>
+    <form method="post">
+        <p>Do you really want to delete your profile?</p>
 
-    <br />
-    <button><a href="/profile">Terug</a></button>
+        <br />
+        <button>Yes, delete</button>
+        <button><a href="/profile">Terug</a></button>
+    </form>
 
 {% endblock content %}

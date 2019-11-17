@@ -13,6 +13,7 @@ from models import User, db
 app = Flask(__name__)
 db.create_all()  # create (new) tables in the database
 
+
 @app.route("/", methods=["GET"])
 def home():
     return render_template("home.html")
@@ -112,56 +113,32 @@ def profile_edit():
 
         return redirect(url_for("profile"))
 
-@app.route("/profile/delete", methods=["GET"])
-def profile_delete():
-    return render_template("profile_delete.html")
 
-@app.route("/result", methods=["POST"])
-def result():
-    # get user from the database based on his / her session token from cookie "session_token"
+@app.route("/profile/delete", methods=["GET", "POST"])
+def profile_delete():
     session_token = request.cookies.get("session_token")
+
+    # get user from the database based on her/his email address
     user = db.query(User).filter_by(session_token=session_token).first()
 
-    # Invoer komende van index.html lezen
-    invoer = request.form.get("guess")
-    code = "NOK"
-
-    try:
-        guess = int(invoer)
-    except ValueError:
-        # Foutieve invoer opvangen
-        message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
-        return render_template("result.html", user=user, message=message, code=code)
-    else:
-        # De invoer was een geheel getal
-        if 1 <= guess <= 30:
-            # De invoer ligt tussen 1 en 30
-            if guess == user.secret_number:
-                message = "Het geheime nummer is inderdaad " + str(user.secret_number) + ". " + \
-                          "Een nieuw geheim nummer wordt ingesteld..."
-                code = "OK"
-                response = make_response(render_template("result.html", user=user, message=message, code=code))
-
-                # Een nieuw geheim nummer initialiseren
-                new_secret = random.randint(1, 30)
-                user.secret_number = new_secret
-
-                # Update the user object in the database
-                db.add(user)
-                db.commit()
-
-                return response
-
-            elif guess > user.secret_number:
-                message = "Your guess is not correct... try something smaller."
-                return render_template("result.html", user=user, message=message, code=code)
-            elif guess < user.secret_number:
-                message = "Your guess is not correct... try something bigger."
-                return render_template("result.html", user=user, message=message, code=code)
+    if request.method == "GET":
+        if user:  # if user is found
+            return render_template("profile_delete.html", user=user)
         else:
-            # Out of bounds
-            message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
-            return render_template("result.html", user=user, message=message, code=code)
+            return render_template("index.html", user=user)
+
+    elif request.method == "POST":
+        # delete the user in the database
+        db.delete(user)
+        db.commit()
+        return redirect(url_for("index"))
+
+
+@app.route("/users", methods=["GET"])
+def all_users():
+    users = db.query(User).all()
+
+    return render_template("users.html", users=users)
 
 
 @app.route("/logout")
