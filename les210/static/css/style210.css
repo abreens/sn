@@ -41,7 +41,9 @@ a {
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
 }
 
-.navigation a { margin-right: 75px; }
+.navigation a, p { margin-left: 50px; }
+
+.navigation p { color: #1c80c1; }
 
 .navigation a:hover { color: #1c80c1; }
 

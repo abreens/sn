@@ -128,12 +128,13 @@ def result():
             return render_template("result.html", message=message, code=code)
 
 
-@app.route("/reset_user")
+@app.route("/logout")
 def reset_user():
-    # Cookie zodat er terug moet worden ingelogged
+    # Cookie session_token deleten zodat er terug moet worden ingelogged
     response = make_response(redirect(url_for('index')))
     response.set_cookie("session_token", expires=0)
     return response
 
+
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)
