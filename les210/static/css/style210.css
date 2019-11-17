@@ -16,6 +16,13 @@ body {
 
 /*** BEGIN SITE STRUCTURE ***/
 
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .titel, .formulier, form, input, .groenvlak, .roodvlak { width: 100%; }
 
 .wrapper {
@@ -32,10 +39,7 @@ a {
 }
 
 .navigation {
-    display: flex;
-    flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
     //background-color: black;
     height: 50px;
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
@@ -43,7 +47,7 @@ a {
 
 .navigation a, p { margin-left: 50px; }
 
-.navigation p { color: #1c80c1; }
+.navigation p { color: #32383e; }
 
 .navigation a:hover { color: #1c80c1; }
 

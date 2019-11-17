@@ -13,8 +13,12 @@ from models import User, db
 app = Flask(__name__)
 db.create_all()  # create (new) tables in the database
 
-
 @app.route("/", methods=["GET"])
+def home():
+    return render_template("home.html")
+
+
+@app.route("/index", methods=["GET"])
 def index():
     # Session token uit cookie "session_token" lezen
     session_token = request.cookies.get("session_token")

@@ -25,12 +25,14 @@
 
             <div class="navigation">
                 <a href="/">Home</a>
-                <a href="/profile">My profile</a>
-                <a href="/logout">Logout</a>
 
                 {% if user %}
-                <!-- # De gebruiker groeten als er iemand is aangelogd -->
-                <p>Welkom, {{user.name}}</p>
+                    <a href="/profile">My profile</a>
+                    <a href="/logout">Logout</a>
+                    <!-- # De gebruiker groeten als er iemand is aangelogd -->
+                    <p>Welkom, {{user.name}}</p>
+                {% else %}
+                    <a href="/index">Login</a>
                 {% endif %}
             </div>
 
