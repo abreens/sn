@@ -8,18 +8,28 @@
                 <h3>{{ message }}</h3>
 
                 <br />
-                <button><a href="/">Terug</a></button>
+                <button><a href="/index">Terug</a></button>
             </div>
 
-        {% else %}
+        {% elif code == "OK" %}
             <div class="groenvlak">
                 <h1>SUCCESS!</h1>
                 <h3>{{ message }}</h3>
 
                 <br />
-                <button><a href="/">Opnieuw</a></button>
-                <button><a href="/logout">Login</a></button>
+                <button><a href="/index">Opnieuw</a></button>
+                <button><a href="/logout">Logout</a></button>
             </div>
+
+        {% elif code == "wrong_pwd" %}
+             <div class="roodvlak">
+                <h1>WRONG PASSWORD!</h1>
+                <h3>{{ message }}</h3>
+
+                <br />
+                <button><a href="/index">Terug</a></button>
+            </div>
+
         {% endif %}
 
 {% endblock content %}
