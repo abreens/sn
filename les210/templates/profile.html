@@ -2,9 +2,15 @@
 
 {% block content %}
 
-    <H1>Profile Page. Under construction.</H1>
+    <H1>Your Profile</H1>
+
+    <p><strong>Username:</strong> {{user.name}}</p>
+    <p><strong>eMail:</strong> {{user.email}}</p>
+    <p><strong>Secret:</strong> {{user.secret_number}}</p>
 
     <br />
+    <button><a href="/profile/edit">Edit profile</a></button>
+    <button><a href="/profile/delete">Delete profile</a></button>
     <button><a href="/index">Terug</a></button>
 
 {% endblock content %}

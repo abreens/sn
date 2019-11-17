@@ -57,21 +57,19 @@ def login():
     if hashed_password != user.password:
         message = "Go back and try again."
         code = "wrong_pwd"
-        return render_template("result.html", user=user, message=message, code=code)
+        return render_template("result.html", message=message, code=code)
+
     elif hashed_password == user.password:
         # Create a random session token for this user
         session_token = str(uuid.uuid4())
-
         # Save the session token in the database
         user.session_token = session_token
         db.add(user)
         db.commit()
-
-    # save user's session token into a cookie
-    response = make_response(redirect(url_for('index')))
-    response.set_cookie("session_token", session_token, httponly=True, samesite='Strict')
-
-    return response
+        # save user's session token into a cookie
+        response = make_response(redirect(url_for('index')))
+        response.set_cookie("session_token", session_token, httponly=True, samesite='Strict')
+        return response
 
 
 @app.route("/profile", methods=["GET"])
@@ -84,7 +82,8 @@ def profile():
     if user:
         return render_template("profile.html", user=user)
     else:
-        return redirect(url_for("index"))
+        return render_template("index.html", user=user)
+
 
 @app.route("/result", methods=["POST"])
 def result():
