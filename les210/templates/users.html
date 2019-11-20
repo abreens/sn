@@ -8,11 +8,19 @@
         <H3>USERS</H3>
     </div>
 
-    <ul>
+    <table id="gebruikers">
+        <tr>
+            <th>User</th>
+            <th>eMail</th>
+        </tr>
+
         {% for user in users %}
-            <li><a href="/user/{{ user.id }}">{{ user.name }}</a> ({{ user.email }})</li>
+            <tr>
+                <td><a href="/user/{{ user.id }}">{{ user.name }}</a></td>
+                <td>{{ user.email }}</td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 
     <br />
     <button><a href="/index">Terug</a></button>
