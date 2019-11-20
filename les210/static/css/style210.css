@@ -94,7 +94,8 @@ button { width: 100px; }
 }
 
 #gebruikers td, #gebruikers th {
-    border: 1px solid #ddd;
+    //border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 10px;
 }
 
@@ -102,6 +103,7 @@ button { width: 100px; }
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #646464;
+    //background-color: #646464;
+    background-color: black;
     color: white;
 }

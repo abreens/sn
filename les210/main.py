@@ -141,6 +141,13 @@ def all_users():
     return render_template("users.html", users=users)
 
 
+@app.route("/user/<user_id>", methods=["GET"])
+def user_details(user_id):
+    user = db.query(User).get(int(user_id))  # .get() can help you query by the ID
+
+    return render_template("user_details.html", user=user)
+
+
 @app.route("/logout")
 def reset_user():
     # Cookie session_token deleten zodat er terug moet worden ingelogged
