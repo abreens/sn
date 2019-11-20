@@ -3,9 +3,12 @@
 {% block title %}{{ user.name }}{% endblock title %}
 
 {% block content %}
-    <h3>PROFILE PAGE OF</h3>
+    <h3>PROFILE PAGE</h3>
 
-    <p><strong>Name: </strong>{{ user.name }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Name: </strong>{{ target_user.name }}</p>
+    <p><strong>Email:</strong> {{ target_user.email }}</p>
+
+    <br />
+    <button><a href="/users">Terug</a></button>
 
 {% endblock content %}

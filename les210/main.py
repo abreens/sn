@@ -102,10 +102,15 @@ def profile_edit():
     elif request.method == "POST":
         name = request.form.get("profile-name")
         email = request.form.get("profile-email")
+        password = request.form.get("profile-password")
+
+        # hash the password
+        hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
         # update the user object
         user.name = name
         user.email = email
+        user.password = hashed_password
 
         # store changes into the database
         db.add(user)
@@ -118,7 +123,7 @@ def profile_edit():
 def profile_delete():
     session_token = request.cookies.get("session_token")
 
-    # get user from the database based on her/his email address
+    # get user from the database based on her/his session token address
     user = db.query(User).filter_by(session_token=session_token).first()
 
     if request.method == "GET":
@@ -136,16 +141,28 @@ def profile_delete():
 
 @app.route("/users", methods=["GET"])
 def all_users():
+    session_token = request.cookies.get("session_token")
+
+    # get user who is logged in from the database based on her/his session token address
+    user = db.query(User).filter_by(session_token=session_token).first()
+
+    # get ALL users from the database
     users = db.query(User).all()
 
-    return render_template("users.html", users=users)
+    return render_template("users.html", user=user, users=users)
 
 
 @app.route("/user/<user_id>", methods=["GET"])
 def user_details(user_id):
-    user = db.query(User).get(int(user_id))  # .get() can help you query by the ID
+    session_token = request.cookies.get("session_token")
 
-    return render_template("user_details.html", user=user)
+    # get user who is logged in from the database based on her/his session token address
+    user = db.query(User).filter_by(session_token=session_token).first()
+
+    # Get the user of which you want to show the profile
+    target_user = db.query(User).get(int(user_id))
+
+    return render_template("user_details.html", user=user, target_user=target_user)
 
 
 @app.route("/logout")
