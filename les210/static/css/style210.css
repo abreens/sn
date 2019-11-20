@@ -51,7 +51,7 @@ li { margin-bottom: 20px; }
 
 .navigation p { color: #32383e; }
 
-.navigation a:hover { color: #1c80c1; }
+a:hover { color: #1c80c1; }
 
 form p { text-align: left; }
 
