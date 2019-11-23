@@ -219,7 +219,7 @@ def test_logout(client):
     client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
                                 "user-password": "123"}, follow_redirects=True)
     # And then logout again
-    response = client.get('/logout')
+    response = client.get('/')
     assert b'/static/img/secretcode.jpg' in response.data
 
 
