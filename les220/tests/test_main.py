@@ -32,11 +32,17 @@ def test_index_logged_in(client):
     assert b'Uw gok?' in response.data
 
 
-# def test_index_wrong_password(client):
+#def test_index_wrong_password(client):
+# create a user
 #    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
-#                                "user-password": "wrongpassword"}, follow_redirects=True)
+#                                "user-password": "123"}, follow_redirects=True)
+#
+    # Then login with wrong pwd
+#    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+#                               "user-password": "wrongpassword"}, follow_redirects=True)
 #    response = client.get('/login')
 #    assert b'WRONG PASSWORD!' in response.data
+
 
 def test_result_correct(client):
     # create a user
@@ -138,6 +144,14 @@ def test_result_geen_getal(client):
 
     response = client.post('/result', data={"guess": "Axel"})  # guess is geen getal
     assert b'Dat was geen (geheel) getal.' in response.data
+
+
+def test_myprofile(client):
+    # create a user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+    response = client.get('/profile')
+    assert b'TestUser' in response.data
 
 
 def cleanup():
