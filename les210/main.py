@@ -2,6 +2,17 @@
 #
 # Les 21 - Must-have features: edit, delete, list all, details
 #
+# Homework 21.1: Fake delete
+# What happens if user deleted the profile by mistake? It might seem impossible,
+# but it happens more often than you'd think. Most of web apps don't really delete data when user "deletes" something.
+# Instead, they have a field in every model called deleted which is by default False.
+# And when user decides to delete something, this fields is changed to True and it appears to the user as deleted.
+# So in case the user changes their mind, s/he can contact the website administrator who can then "un-delete"
+# what was "deleted" (which means changing the deleted field back to False).
+#
+# Homework 21.2: Change password
+# Allow users to change their password on the Edit profile page.
+#
 ###
 
 import random
