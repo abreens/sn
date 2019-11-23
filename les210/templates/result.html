@@ -8,7 +8,7 @@
                 <h3>{{ message }}</h3>
 
                 <br />
-                <button><a href="/index">Terug</a></button>
+                <button type="submit"><a href="/index">Terug</a></button>
             </div>
 
         {% elif code == "OK" %}
@@ -17,7 +17,7 @@
                 <h3>{{ message }}</h3>
 
                 <br />
-                <button><a href="/index">Opnieuw</a></button>
+                <button type="submit"><a href="/index">Opnieuw</a></button>
             </div>
 
         {% elif code == "wrong_pwd" %}
@@ -26,7 +26,7 @@
                 <h3>{{ message }}</h3>
 
                 <br />
-                <button><a href="/index">Terug</a></button>
+                <button type="submit"><a href="/index">Terug</a></button>
             </div>
 
         {% endif %}
