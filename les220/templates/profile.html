@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Profile of {{ user.name}}{% endblock title %}
+
+{% block content %}
+
+    <div class="title">
+        <H3>YOUR PROFILE</H3>
+    </div>
+
+    <p><strong>Username:</strong> {{user.name}}</p>
+    <p><strong>eMail:</strong> {{user.email}}</p>
+
+    <br />
+    <button type="submit"><a href="/profile/edit">Edit profile</a></button>
+    <button type="submit"><a href="/profile/delete">Delete profile</a></button>
+    <button type="submit"><a href="/index">Terug</a></button>
+
+{% endblock content %}

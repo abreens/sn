@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        {% if code == "NOK" %}
+            <div class="roodvlak">
+                <h1>ERROR!</h1>
+                <h3>{{ message }}</h3>
+
+                <br />
+                <button type="submit"><a href="/index">Terug</a></button>
+            </div>
+
+        {% elif code == "OK" %}
+            <div class="groenvlak">
+                <h1>SUCCESS!</h1>
+                <h3>{{ message }}</h3>
+
+                <br />
+                <button type="submit"><a href="/index">Opnieuw</a></button>
+            </div>
+
+        {% elif code == "wrong_pwd" %}
+             <div class="roodvlak">
+                <h1>WRONG PASSWORD!</h1>
+                <h3>{{ message }}</h3>
+
+                <br />
+                <button type="submit"><a href="/index">Terug</a></button>
+            </div>
+
+        {% endif %}
+
+{% endblock content %}

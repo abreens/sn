@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}All Users{% endblock title %}
+
+{% block content %}
+
+    <div class="title">
+        <H3>USERS</H3>
+    </div>
+
+    <table id="gebruikers">
+        <tr>
+            <th>User</th>
+            <th>eMail</th>
+        </tr>
+
+        {% for user in users %}
+            {% if not user.deleted %}
+                <tr>
+                    <td><a href="/user/{{ user.id }}">{{ user.name }}</a></td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+    <br />
+    <button type="submit"><a href="/index">Terug</a></button>
+
+{% endblock content %}

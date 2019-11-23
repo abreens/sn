@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>{% block title %}Casino Game{% endblock title %}</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Guess The Secret Number">
+
+        <!-- Google font "Open Sans:300" & "Open Sans Condensed:300" & "Quicksand" -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:300|Quicksand&display=swap"
+              rel="stylesheet">
+
+         <!-- Link to external stylesheet -->
+        <link rel="stylesheet" type="text/css" href="../static/css/style220.css">
+
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+
+            <div class="navigation">
+
+                {% if user %}
+                    <a href="/profile">My profile</a>
+                    <a href="/users">Users</a>
+                    <a href="/logout">Logout</a>
+                    <!-- De gebruiker groeten als er iemand is aangelogd -->
+                    <p>Hallo, {{user.name}}</p>
+                {% else %}
+                    <a href="/">Home</a>
+                    <a href="/index">Login</a>
+                {% endif %}
+
+            </div>
+
+        {% block content %}
+        {% endblock content %}
+
+        </div>
+
+    </body>
+
+</html>

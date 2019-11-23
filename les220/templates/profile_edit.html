@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Edit profile{% endblock title %}
+
+{% block content %}
+
+    <div class="title">
+        <H3>EDIT YOUR PROFILE</H3>
+    </div>
+
+    <form method="post">
+        <p>
+            <strong>Your name:</strong>
+            <input type="text" value="{{ user.name }}" name="profile-name">
+        </p>
+
+        <p>
+            <strong>Your email:</strong>
+            <input type="email" value="{{ user.email }}" name="profile-email">
+        </p>
+
+        <p>
+            <strong>New password:</strong>
+            <input type="password" name="profile-password" placeholder="Enter new password" required><br>
+        </p>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="submit"><a href="/profile">Terug</a></button>
+    </form>
+
+{% endblock content %}
