@@ -123,6 +123,23 @@ def test_result_out_of_bound_high(client):
     assert b'Het getal moet tussen 1 en 30 liggen.' in response.data
 
 
+def test_result_geen_getal(client):
+    # create a user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+
+    # get the first (and only) user object from the database
+    user = db.query(User).first()
+
+    # set the secret number to 22, so that you can make a success "guess" in the test.
+    user.secret_number = 22
+    db.add(user)
+    db.commit()
+
+    response = client.post('/result', data={"guess": "Axel"})  # guess is geen getal
+    assert b'Dat was geen (geheel) getal.' in response.data
+
+
 def cleanup():
     # clean up/delete the DB (drop all tables in the database)
     db.drop_all()
