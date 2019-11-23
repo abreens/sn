@@ -22,6 +22,13 @@ def test_index_not_logged_in(client):
     assert b'Enter your name' in response.data
 
 
+def test_index_logged_in(client):
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+    response = client.get('/index')
+    assert b'Uw gok?' in response.data
+
+
 def cleanup():
     # clean up/delete the DB (drop all tables in the database)
     db.drop_all()
