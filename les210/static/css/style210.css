@@ -38,11 +38,8 @@ a {
     color: black;
 }
 
-li { margin-bottom: 20px; }
-
 .navigation {
     justify-content: flex-end;
-    //background-color: black;
     height: 50px;
     position: relative; /* Moet erbij om overlap te vermijden bij GSM view in Landscape :$ */
 }
@@ -72,7 +69,7 @@ input, button {
 
 button { width: 100px; }
 
-/*** SPECIFIEKE STYLING VOOR RESULT_ERROR.HTML AND RESULT_SUCCESS.HTML ***/
+/*** SPECIFIEKE STYLING VOOR RESULT.HTML ***/
 
 .groenvlak {
     background-color: #c3e6cb;
@@ -94,7 +91,6 @@ button { width: 100px; }
 }
 
 #gebruikers td, #gebruikers th {
-    //border: 1px solid #ddd;
     border: 1px solid black;
     padding: 10px;
 }
@@ -103,7 +99,6 @@ button { width: 100px; }
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    //background-color: #646464;
     background-color: black;
     color: white;
 }
