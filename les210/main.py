@@ -20,6 +20,8 @@
 import random
 import uuid
 import hashlib
+from idlelib import window
+
 from flask import Flask, render_template, request, redirect, url_for, make_response
 from models import User, db
 
@@ -60,11 +62,17 @@ def login():
     user = db.query(User).filter_by(email=email).first()
 
     if not user:
-        # create a User object. Note that we don't have to specify the deleted field since it's default is
-        # False. See models.py
+        # create a User object.
+        # Note that we don't have to specify the deleted field since it's default is False. See models.py
         secret_number = random.randint(1, 30)
         user = User(name=name, email=email, secret_number=secret_number, password=hashed_password)
         # save the user object into a database
+        db.add(user)
+        db.commit()
+
+    if user.deleted:
+        # re-activeer account en save the user object into a database
+        user.deleted = False
         db.add(user)
         db.commit()
 
@@ -110,17 +118,15 @@ def result():
             if guess == user.secret_number:
                 message = "Het geheime nummer is inderdaad " + str(user.secret_number) + ". " + \
                           "Een nieuw geheim nummer wordt ingesteld..."
-                code = "OK"
-                response = make_response(render_template("result.html", user=user, message=message, code=code))
-
-                # Een nieuw geheim nummer initialiseren
+                # Het nummer is geraden dus een nieuw geheim nummer initialiseren
                 new_secret = random.randint(1, 30)
                 user.secret_number = new_secret
-
                 # Update the user object in the database
                 db.add(user)
                 db.commit()
 
+                code = "OK"
+                response = make_response(render_template("result.html", user=user, message=message, code=code))
                 return response
 
             elif guess > user.secret_number:
