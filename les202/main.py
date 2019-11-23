@@ -42,11 +42,15 @@ def github_callback():
     response.set_cookie("oauth_token", json.dumps(token), httponly=True)
     return response
 
+
 @app.route("/profile")
 def profile():
-    github = OAuth2Session(os.environ.get("GITHUB_CLIENT_ID"), token=json.loads(request.cookies.get("oauth_token")))
-    github_profile_data = github.get('https://api.github.com/user').json()
-    return render_template("profile.html", github_profile_data=github_profile_data)
+    if request.cookies.get("oauth_token"):
+        github = OAuth2Session(os.environ.get("GITHUB_CLIENT_ID"), token=json.loads(request.cookies.get("oauth_token")))
+        github_profile_data = github.get('https://api.github.com/user').json()
+        return render_template("profile.html", github_profile_data=github_profile_data)
+    else:
+        return render_template("index.html")
 
 
 @app.route("/github/logout")
