@@ -4,8 +4,6 @@ from main import app, db
 from models import User
 
 
-
-
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
@@ -33,14 +31,14 @@ def test_index_logged_in(client):
 
 
 def test_index_wrong_password(client):
-# create a user
+    # create a user
     client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
                                 "user-password": "123"}, follow_redirects=True)
 
     # POST
-    response = client.post('/login', data={"profile-name": "TestUser",
-                                            "profile-email": "testuser@telenet.be",
-                                            "profile-password": "456"}, follow_redirects=True)
+    response = client.post('/login', data={"user-name": "TestUser",
+                                           "user-email": "testuser@telenet.be",
+                                           "user-password": "456"}, follow_redirects=True)
     assert b'WRONG PASSWORD!' in response.data
 
 
