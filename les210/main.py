@@ -60,20 +60,14 @@ def login():
     # see if user already exists
     user = db.query(User).filter_by(email=email).first()
 
-    if not user:
-        # create a User object.
-        # Note that we don't have to specify the deleted field since it's default is False. See models.py
+    if not user or user.deleted:
+        # create a User object or re-activeer user by resetting user.deleted
         secret_number = random.randint(1, 30)
-        user = User(name=name, email=email, secret_number=secret_number, password=hashed_password)
+        user = User(name=name, email=email, secret_number=secret_number, password=hashed_password, deleted=False)
         # save the user object into a database
         db.add(user)
         db.commit()
 
-    if user.deleted:
-        # re-activeer account en save the user object into a database
-        user.deleted = False
-        db.add(user)
-        db.commit()
 
     # Check if password matches.
     if hashed_password != user.password:
