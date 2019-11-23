@@ -154,6 +154,16 @@ def test_myprofile(client):
     assert b'TestUser' in response.data
 
 
+def test_profile_edit(client):
+    # create a user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+
+    # GET
+    response = client.get('/profile/edit')
+    assert b'EDIT YOUR PROFILE' in response.data
+
+
 def test_all_users(client):
     response = client.get('/users')
     assert b'<H3>USERS</H3>' in response.data
@@ -165,6 +175,19 @@ def test_all_users(client):
 
     response = client.get('/users')
     assert b'<H3>USERS</H3>' in response.data
+    assert b'TestUser' in response.data
+
+
+def test_user_details(client):
+    # create a new user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+
+    # get user object from the database
+    user = db.query(User).first()
+
+    response = client.get('/user/{}'.format(user.id))
+    assert b'testuser@telenet.be' in response.data
     assert b'TestUser' in response.data
 
 
