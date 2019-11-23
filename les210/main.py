@@ -61,7 +61,7 @@ def login():
     user = db.query(User).filter_by(email=email).first()
 
     if not user:
-        # create a User object or re-activeer user by resetting user.deleted
+        # create a User object
         secret_number = random.randint(1, 30)
         user = User(name=name, email=email, secret_number=secret_number, password=hashed_password)
         # save the user object into a database
@@ -70,11 +70,10 @@ def login():
 
     if user.deleted:
         # Reactivate account by resetting user.deleted to False
-        user.deleted=False
+        user.deleted = False
         # save the user object into a database
         db.add(user)
         db.commit()
-
 
     # Check if password matches.
     if hashed_password != user.password:
@@ -145,7 +144,7 @@ def result():
 def profile():
     session_token = request.cookies.get("session_token")
 
-    # get user from the database based on her/his email address
+    # get user from the database based on his / her session token from cookie "session_token"
     user = db.query(User).filter_by(session_token=session_token).first()
 
     if user:
@@ -158,7 +157,7 @@ def profile():
 def profile_edit():
     session_token = request.cookies.get("session_token")
 
-    # get user from the database based on her/his email address
+    # get user from the database based on his / her session token from cookie "session_token"
     user = db.query(User).filter_by(session_token=session_token).first()
 
     if request.method == "GET":
@@ -203,7 +202,6 @@ def profile_delete():
     elif request.method == "POST":
         # update the deleted field of the user object
         user.deleted = True
-
         # store changes into the database
         db.add(user)
         db.commit()
@@ -246,4 +244,4 @@ def reset_user():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
