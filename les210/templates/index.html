@@ -3,6 +3,7 @@
 {% block content %}
 
         {% if user %}
+
              <div class="titel">
                 <h1>Welcome to the Guess The Secret Number Game.</h1>
                 <h3>Raad het geheime getal (tussen 1 en 30).</h3>
@@ -15,7 +16,9 @@
                     <button type="reset">Reset</button>
                 </form>
             </div>
+
         {% else %}
+
             <div class="titel">
                 <h3>Login or Create account</h3>
             </div>
@@ -29,6 +32,7 @@
                     <button type="reset">Reset</button>
                 </form>
             </div>
+
         {% endif %}
 
 {% endblock content %}
