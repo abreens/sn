@@ -214,6 +214,15 @@ def test_user_details(client):
     assert b'TestUser' in response.data
 
 
+def test_logout(client):
+    # create a user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+    # And then logout again
+    response = client.get('/logout')
+    assert b'/static/img/secretcode.jpg' in response.data
+
+
 def cleanup():
     # clean up/delete the DB (drop all tables in the database)
     db.drop_all()
