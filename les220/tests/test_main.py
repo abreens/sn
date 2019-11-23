@@ -17,6 +17,11 @@ def client():
     yield client
 
 
+def test_home_page(client):
+    response = client.get('/')
+    assert b'/static/img/secretcode.jpg' in response.data
+
+
 def test_index_not_logged_in(client):
     response = client.get('/index')
     # This is the actual test
