@@ -32,16 +32,16 @@ def test_index_logged_in(client):
     assert b'Uw gok?' in response.data
 
 
-#def test_index_wrong_password(client):
+def test_index_wrong_password(client):
 # create a user
-#    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
-#                                "user-password": "123"}, follow_redirects=True)
-#
-    # Then login with wrong pwd
-#    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
-#                               "user-password": "wrongpassword"}, follow_redirects=True)
-#    response = client.get('/login')
-#    assert b'WRONG PASSWORD!' in response.data
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+
+    # POST
+    response = client.post('/login', data={"profile-name": "TestUser",
+                                            "profile-email": "testuser@telenet.be",
+                                            "profile-password": "456"}, follow_redirects=True)
+    assert b'WRONG PASSWORD!' in response.data
 
 
 def test_result_correct(client):
@@ -169,6 +169,19 @@ def test_profile_edit(client):
                                                   "profile-password": "123"}, follow_redirects=True)
     assert b'TestUser2' in response.data
     assert b'testuser2@telenet.be' in response.data
+
+
+def test_profile_delete(client):
+    # create a user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+    # GET
+    response = client.get('/profile/delete')
+    assert b'DELETE YOUR PROFILE' in response.data
+
+    # POST
+    response = client.post('/profile/delete', follow_redirects=True)
+    assert b'/static/img/secretcode.jpg' in response.data  # redirected back to the index site
 
 
 def test_all_users(client):
