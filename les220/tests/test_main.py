@@ -163,6 +163,12 @@ def test_profile_edit(client):
     response = client.get('/profile/edit')
     assert b'EDIT YOUR PROFILE' in response.data
 
+    # POST
+    response = client.post('/profile/edit', data={"profile-name": "TestUser2",
+                                                  "profile-email": "testuser2@telenet.be"}, follow_redirects=True)
+    assert b'TestUser2' in response.data
+    assert b'test@user2@telenet.be' in response.data
+
 
 def test_all_users(client):
     response = client.get('/users')
