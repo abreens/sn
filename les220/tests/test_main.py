@@ -19,7 +19,7 @@ def client():
 def test_index_not_logged_in(client):
     response = client.get('/index')
     # This is the actual test
-    assert b'Enter your nam' in response.data
+    assert b'Enter your name' in response.data
 
 
 def cleanup():
