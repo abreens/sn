@@ -60,10 +60,10 @@ def login():
     # see if user already exists
     user = db.query(User).filter_by(email=email).first()
 
-    if not user or user.deleted:
+    if not user:
         # create a User object or re-activeer user by resetting user.deleted
         secret_number = random.randint(1, 30)
-        user = User(name=name, email=email, secret_number=secret_number, password=hashed_password, deleted=False)
+        user = User(name=name, email=email, secret_number=secret_number, password=hashed_password)
         # save the user object into a database
         db.add(user)
         db.commit()
