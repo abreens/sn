@@ -15,10 +15,12 @@
         </tr>
 
         {% for user in users %}
-            <tr>
-                <td><a href="/user/{{ user.id }}">{{ user.name }}</a></td>
-                <td>{{ user.email }}</td>
-            </tr>
+            {% if not user.deleted %}
+                <tr>
+                    <td><a href="/user/{{ user.id }}">{{ user.name }}</a></td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endif %}
         {% endfor %}
     </table>
 

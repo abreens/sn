@@ -9,6 +9,8 @@
 # And when user decides to delete something, this fields is changed to True and it appears to the user as deleted.
 # So in case the user changes their mind, s/he can contact the website administrator who can then "un-delete"
 # what was "deleted" (which means changing the deleted field back to False).
+# PS. Er is geen functionaliteit voorzien een user te "undeleten". Dit moet door een "admin" gebeuren via
+# DB Browser for SQLite.
 #
 # Homework 21.2: Change password
 # Allow users to change their password on the Edit profile page.
@@ -193,10 +195,14 @@ def profile_delete():
             return render_template("index.html", user=user)
 
     elif request.method == "POST":
-        # delete the user in the database
-        db.delete(user)
+        # update the deleted field of the user object
+        user.deleted = True
+
+        # store changes into the database
+        db.add(user)
         db.commit()
-        return redirect(url_for("index"))
+
+        return redirect(url_for("reset_user"))
 
 
 @app.route("/users", methods=["GET"])
