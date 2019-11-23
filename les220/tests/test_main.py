@@ -154,6 +154,20 @@ def test_myprofile(client):
     assert b'TestUser' in response.data
 
 
+def test_all_users(client):
+    response = client.get('/users')
+    assert b'<H3>USERS</H3>' in response.data
+    assert b'TestUser' not in response.data  # TestUser is not yet created
+
+    # create a new user
+    client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
+                                "user-password": "123"}, follow_redirects=True)
+
+    response = client.get('/users')
+    assert b'<H3>USERS</H3>' in response.data
+    assert b'TestUser' in response.data
+
+
 def cleanup():
     # clean up/delete the DB (drop all tables in the database)
     db.drop_all()
