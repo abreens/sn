@@ -68,6 +68,13 @@ def login():
         db.add(user)
         db.commit()
 
+    if user.deleted:
+        # Reactivate account by resetting user.deleted to False
+        user.deleted=False
+        # save the user object into a database
+        db.add(user)
+        db.commit()
+
 
     # Check if password matches.
     if hashed_password != user.password:
@@ -233,7 +240,7 @@ def user_details(user_id):
 @app.route("/logout")
 def reset_user():
     # Cookie session_token deleten zodat er terug moet worden ingelogged
-    response = make_response(redirect(url_for('index')))
+    response = make_response(redirect(url_for('home')))
     response.set_cookie("session_token", expires=0)
     return response
 
