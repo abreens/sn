@@ -58,7 +58,8 @@ def login():
     user = db.query(User).filter_by(email=email).first()
 
     if not user:
-        # create a User object
+        # create a User object. Note that we don't have to specify the deleted field since it's default is
+        # False. See models.py
         secret_number = random.randint(1, 30)
         user = User(name=name, email=email, secret_number=secret_number, password=hashed_password)
         # save the user object into a database
@@ -82,6 +83,54 @@ def login():
         response = make_response(redirect(url_for('index')))
         response.set_cookie("session_token", session_token, httponly=True, samesite='Strict')
         return response
+
+
+@app.route("/result", methods=["POST"])
+def result():
+    # get user from the database based on his / her session token from cookie "session_token"
+    session_token = request.cookies.get("session_token")
+    user = db.query(User).filter_by(session_token=session_token).first()
+
+    # Invoer komende van index.html lezen
+    invoer = request.form.get("guess")
+    code = "NOK"
+
+    try:
+        guess = int(invoer)
+    except ValueError:
+        # Foutieve invoer opvangen
+        message = "Dat was geen (geheel) getal. Probeer aub opnieuw..."
+        return render_template("result.html", user=user, message=message, code=code)
+    else:
+        # De invoer was een geheel getal
+        if 1 <= guess <= 30:
+            # De invoer ligt tussen 1 en 30
+            if guess == user.secret_number:
+                message = "Het geheime nummer is inderdaad " + str(user.secret_number) + ". " + \
+                          "Een nieuw geheim nummer wordt ingesteld..."
+                code = "OK"
+                response = make_response(render_template("result.html", user=user, message=message, code=code))
+
+                # Een nieuw geheim nummer initialiseren
+                new_secret = random.randint(1, 30)
+                user.secret_number = new_secret
+
+                # Update the user object in the database
+                db.add(user)
+                db.commit()
+
+                return response
+
+            elif guess > user.secret_number:
+                message = "Your guess is not correct... try something smaller."
+                return render_template("result.html", user=user, message=message, code=code)
+            elif guess < user.secret_number:
+                message = "Your guess is not correct... try something bigger."
+                return render_template("result.html", user=user, message=message, code=code)
+        else:
+            # Out of bounds
+            message = "Het getal moet tussen 1 en 30 liggen. Probeer aub opnieuw..."
+            return render_template("result.html", user=user, message=message, code=code)
 
 
 @app.route("/profile", methods=["GET"])
