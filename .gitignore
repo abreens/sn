@@ -111,4 +111,4 @@ venv.bak/
 *.pyc
 db.json
 secrets.py
-/les230/templates/openweathermap.py
+openweathermap.py
