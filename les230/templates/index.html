@@ -10,8 +10,8 @@
 
         <p>{{ data }}</p>
 
-        <p>Location: {{ data.name }}</p>
+        <p>Location: {{ data.name }}, {{ data.sys.country }}</p>
         <p>Weather description: {{ data.weather[0].description }}</p>
-        <p>Current temperature: {{ data.main.temp }}</p>
+        <p>Current temperature: {{ data.main.temp }} °C</p>
     </body>
 </html>
