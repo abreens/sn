@@ -154,8 +154,8 @@ def test_myprofile(client):
     client.post('/login', data={"user-name": "TestUser", "user-email": "testuser@telenet.be",
                                 "user-password": "123"}, follow_redirects=True)
     response = client.get('/profile')
-    assert b'TestUser' in response.data
-
+    # Added second part of the AND per comment of Raphael
+    assert b'TestUser' in response.data and b'YOUR PROFILE' in response.data
 
 def test_profile_edit(client):
     # create a user
