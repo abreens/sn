@@ -164,13 +164,13 @@ def test_profile_edit(client):
 
     # GET
     response = client.get('/profile/edit')
-    assert b'EDIT YOUR PROFILE' in response.data
+    # Added second part of the AND per comment of Raphael
+    assert b'TestUser' in response.data and b'EDIT YOUR PROFILE' in response.data
 
     # POST
     response = client.post('/profile/edit', data={"profile-name": "TestUser2",
                                                   "profile-email": "testuser2@telenet.be",
                                                   "profile-password": "123"}, follow_redirects=True)
-    assert b'TestUser2' in response.data
     assert b'testuser2@telenet.be' in response.data
 
 
@@ -180,7 +180,8 @@ def test_profile_delete(client):
                                 "user-password": "123"}, follow_redirects=True)
     # GET
     response = client.get('/profile/delete')
-    assert b'DELETE YOUR PROFILE' in response.data
+    # Added second part of the AND per comment of Raphael
+    assert b'TestUser' in response.data and b'DELETE YOUR PROFILE' in response.data
 
     # POST
     response = client.post('/profile/delete', follow_redirects=True)
