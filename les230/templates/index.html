@@ -8,10 +8,14 @@
     <body>
         <h1>SmartNinja Weather</h1>
 
-        <p>{{ data }}</p>
+        {% if data %}
+            <p>{{ data }}</p>
 
-        <p>Location: {{ data.name }}, {{ data.sys.country }}</p>
-        <p>Weather description: {{ data.weather[0].description }}</p>
-        <p>Current temperature: {{ data.main.temp }} °C</p>
+            <p>Location: {{ data.name }}, {{ data.sys.country }}</p>
+            <p>Weather description: {{ data.weather[0].description }}</p>
+            <p>Current temperature: {{ data.main.temp }} °C</p>
+        {% else %}
+            <p>No data found...</p>
+        {% endif %}
     </body>
 </html>
